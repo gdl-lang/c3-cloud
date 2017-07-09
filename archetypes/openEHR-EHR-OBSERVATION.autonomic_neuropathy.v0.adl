@@ -1,0 +1,182 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.autonomic_neuropathy.v0
+
+concept
+	[at0000]	-- Autonomic neuropathy
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Jimmy Axelsson">
+		["email"] = <"jimmy.axelsson@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-09">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"038A2C56135A0073A63D7A8F983455E8">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Autonomic neuropathy
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Has the patient experienced loss of warning signs for hypoglycaemia?
+										value matches {
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Does the patient have unexplained diarrhoea, especially during the night?
+										value matches {
+											0|[local::at0011], 	-- No
+											1|[local::at0012]  	-- Yes
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Does the patient have unexplained bladder emptying problems?
+										value matches {
+											0|[local::at0013], 	-- No
+											1|[local::at0014]  	-- Yes
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Does the patient experience abnormal sweating? 
+										value matches {
+											C_DV_ORDINAL <
+											>
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Does the patient use tricyclic or antidepressant drugs?
+										value matches {
+											0|[local::at0015], 	-- No
+											1|[local::at0016]  	-- Yes
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Recommendation 1
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {[local::at0019]}		-- Consider possibility of autonomic neuropathy
+											}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Recommendation 2
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {[local::at0020]}		-- Be aware of increased likelihood of side effects (e.g. ortostatic hypotension) when using tricyclic or antidepressant drugs
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Autonomic neuropathy">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Has the patient experienced loss of warning signs for hypoglycaemia?">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Does the patient have unexplained diarrhoea, especially during the night?">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Does the patient have unexplained bladder emptying problems?">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Does the patient experience abnormal sweating? ">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Does the patient use tricyclic or antidepressant drugs?">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Recommendation 1">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Recommendation 2">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Consider possibility of autonomic neuropathy">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Be aware of increased likelihood of side effects (e.g. ortostatic hypotension) when using tricyclic or antidepressant drugs">
+					description = <"*">
+				>
+			>
+		>
+	>
