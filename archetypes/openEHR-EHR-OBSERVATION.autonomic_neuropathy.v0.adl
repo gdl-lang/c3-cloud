@@ -8,23 +8,32 @@ language
 description
 	original_author = <
 		["name"] = <"Jimmy Axelsson">
-		["email"] = <"jimmy.axelsson@cambiocds.com">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-07-09">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"">
-			use = <"">
+			purpose = <"To provide guidance about monitoring autonomic neuropathy in diabetes patients.">
+			use = <"To identify diabetes patients in need of autonomic neuropathy monitoring. 
+
+Patients are recommended to receive monitoring if they are experiencing:
+ - Abnormal sweating
+ - Unexplained diarrhoea, especially during the night
+ - Unexplained bladder emptying problems
+ - Loss of warning signs for hypoglycaemia
+">
+			keywords = <"Diabetes", "Abnormal sweating", "Diarrhoea", "Autonomic neuropathy", "Bladder problems">
 			misuse = <"">
-			copyright = <"">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"038A2C56135A0073A63D7A8F983455E8">
+		["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).">
+		["MD5-CAM-1.0.1"] = <"5C93102B05C891085CDD2DACD2AD46C3">
 	>
 
 definition
@@ -48,7 +57,7 @@ definition
 											1|[local::at0012]  	-- Yes
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Does the patient have unexplained bladder emptying problems?
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Does the patient have unexplained problems emptying the bladder?
 										value matches {
 											0|[local::at0013], 	-- No
 											1|[local::at0014]  	-- Yes
@@ -56,8 +65,8 @@ definition
 									}
 									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Does the patient experience abnormal sweating? 
 										value matches {
-											C_DV_ORDINAL <
-											>
+											0|[local::at0021], 	-- No
+											1|[local::at0022]  	-- Yes
 										}
 									}
 									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Does the patient use tricyclic or antidepressant drugs?
@@ -69,14 +78,22 @@ definition
 									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Recommendation 1
 										value matches {
 											DV_CODED_TEXT matches {
-												defining_code matches {[local::at0019]}		-- Consider possibility of autonomic neuropathy
+												defining_code matches {
+													[local::
+													at0023, 	-- No recommendation
+													at0019]	-- Consider possibility of autonomic neuropathy
+												}
 											}
 										}
 									}
 									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Recommendation 2
 										value matches {
 											DV_CODED_TEXT matches {
-												defining_code matches {[local::at0020]}		-- Be aware of increased likelihood of side effects (e.g. ortostatic hypotension) when using tricyclic or antidepressant drugs
+												defining_code matches {
+													[local::
+													at0024, 	-- No recommendation
+													at0020]	-- Be aware of increased likelihood of side effects (e.g. ortostatic hypotension) when using tricyclic or antidepressant drugs
+												}
 											}
 										}
 									}
@@ -95,7 +112,8 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Autonomic neuropathy">
-					description = <"unknown">
+					description = <"To provide guidance about monitoring autonomic neuropathy in diabetes patients.
+">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -126,7 +144,7 @@ ontology
 					description = <"*">
 				>
 				["at0008"] = <
-					text = <"Does the patient have unexplained bladder emptying problems?">
+					text = <"Does the patient have unexplained problems emptying the bladder?">
 					description = <"*">
 				>
 				["at0009"] = <
@@ -175,6 +193,22 @@ ontology
 				>
 				["at0020"] = <
 					text = <"Be aware of increased likelihood of side effects (e.g. ortostatic hypotension) when using tricyclic or antidepressant drugs">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"No recommendation">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"No recommendation">
 					description = <"*">
 				>
 			>

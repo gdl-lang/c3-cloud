@@ -1,0 +1,57 @@
+<html><head><script id="decision-support-view" type="application/json">{
+  "dsViewId": "Autonomiv_Neuropathy.v0",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "en": {
+      "name": "Autonomic Neuropathy (C3-Cloud)",
+      "description": "To provide guidance about monitoring autonomic neuropathy in diabetes patients.\n"
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-07-09",
+      "name": "Jimmy Axelsson",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [],
+    "lifecycleState": "Author draft",
+    "details": {
+      "en": {
+        "purpose": "To provide guidance about monitoring autonomic neuropathy in diabetes patients.",
+        "keywords": [
+          "Diabetes",
+          "Abnormal sweating",
+          "Diarrhoea",
+          "Autonomic neuropathy",
+          "Bladder problems"
+        ],
+        "use": "To identify diabetes patients in need of autonomic neuropathy monitoring. \n\nPatients are recommended to receive monitoring if they are experiencing:\n - Abnormal sweating\n - Unexplained diarrhoea, especially during the night\n - Unexplained bladder emptying problems\n - Loss of warning signs for hypoglycaemia",
+        "copyright": "© Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).To identify diabetes patients in need of autonomic neuropathy monitoring. "
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "Autonomic_Neuropathy"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "en": {
+      "id": "en",
+      "terms": {}
+    }
+  },
+  "resultTemplates": []
+}</script></head><body></body></html>
