@@ -1,0 +1,61 @@
+<html><head><script id="decision-support-view" type="application/json">{
+  "dsViewId": "Self_monitoring_blood_glucose.v1",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "en": {
+      "name": "NICE Guidelines",
+      "description": "Self-monitoring of blood glucose"
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-07-11",
+      "name": "Dennis Forslund",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [],
+    "details": {
+      "en": {
+        "purpose": "To provide guidance on self-monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "keywords": [
+          "self-monitoring",
+          "diabetes",
+          "type 2 diabetes",
+          "NICE",
+          "NICE guidelines"
+        ],
+        "use": "Use to provide guidance on self-monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.\n\nSelf-monitoring is not recommended if the patient is 1) not prescribed treatment with risk of hypoglycemia 2) pregnant, or plan to become pregnant.",
+        "copyright": "Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28)."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "Self_monitoring_blood_glucose.v1"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "en": {
+      "id": "en",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    }
+  },
+  "resultTemplates": []
+}</script></head><body></body></html>
