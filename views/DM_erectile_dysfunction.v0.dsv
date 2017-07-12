@@ -1,0 +1,57 @@
+<html><head><script id="decision-support-view" type="application/json">{
+  "dsViewId": "DM_erectile_dysfunction.v0",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "en": {
+      "name": "Erectile Dysfunction in type 2 Diabetes",
+      "description": "The National Institute for Health and Care Excellence (NICE) guideline for management of type 2 diabetes in adults provides recommendations for managing erectile dysfunction in this group of patients. Recommendations are made based on a \u0027Yes\u0027 or \u0027No\u0027 response to: Does the patient have erectile dysfunction? Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated? Has PD5EI treatment been successful? The guideline and recommendations are only valid for male patients with type 2 diabetes."
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-07-12",
+      "name": "Eneimi Allwell-Brown",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [],
+    "lifecycleState": "Author draft",
+    "details": {
+      "en": {
+        "purpose": "To offer recommendations for management of erectile dysfunction in patients with type 2 diabetes.",
+        "keywords": [
+          "PDE5",
+          "diabetes mellitus",
+          "NICE",
+          "ED"
+        ],
+        "use": "To record data about patient\u0027s eligibility for phosphodiesterase-5 inhibitor (PDE5I) treatment or otherwise, and whether PDE5I treatment was or was not successful in candidate patients with erectile dysfunction.\nRecommendations are made based on a \u0027Yes\u0027 or \u0027No\u0027 response to: Does the patient have erectile dysfunction? Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated? Has PD5EI treatment been successful? \nThe guideline and recommendations are only valid for male patients with type 2 diabetes.",
+        "misuse": "Not intended for patients with type 1 diabetes.\nNot a diagnostic tool.",
+        "copyright": "© Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "NICE. Type 2 diabetes in adults: management. NG28. December 2015."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "DM_erectile_dysfunction.v0"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "en": {
+      "id": "en",
+      "terms": {}
+    }
+  },
+  "resultTemplates": []
+}</script></head><body></body></html>

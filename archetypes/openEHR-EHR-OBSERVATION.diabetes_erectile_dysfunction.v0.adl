@@ -1,0 +1,223 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.diabetes_erectile_dysfunction.v0
+
+concept
+	[at0000]	-- Type 2 Diabetes -Erectile Dysfunction
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-11">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To offer recommendations for management of erectile dysfunction in patients with type 2 diabetes.">
+			use = <"To record data about patient's eligibility for phosphodiesterase-5 inhibitor (PDE5I) treatment or otherwise, and whether PDE5I treatment was or was not successful in candidate patients with erectile dysfunction.
+Recommendations are made based on a 'Yes' or 'No' response to: Does the patient have erectile dysfunction? Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated? Has PD5EI treatment been successful? 
+The guideline and recommendations are only valid for male patients with type 2 diabetes.">
+			keywords = <"diabetes mellitus", "NICE", "ED", "PDE5">
+			misuse = <"Not intended for patients with type 1 diabetes.
+Not a diagnostic tool.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"49B6619E9DF430FFC197239AE20E1119">
+		["references"] = <"NICE. Type 2 diabetes in adults: management. NG28. December 2015.">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Type 2 Diabetes -Erectile Dysfunction
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Sex
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- Male
+													at0006]	-- Female
+												}
+											}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Does the patient have type 2 diabetes (DM2)?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0008, 	-- Yes
+													at0009]	-- No
+												}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Does the patient have erectile dysfunction (ED)?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0008, 	-- Yes
+													at0009]	-- No
+												}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0008, 	-- Yes
+													at0009]	-- No
+												}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Has phosphodiesterase-5 inhibitor (PDE5I) treatment been successful?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0008, 	-- Yes
+													at0009]	-- No
+												}
+											}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Recommendation
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0014, 	-- No recommendation
+													at0015, 	-- Offer to discuss erectile dysfunction as part of of the patient's annual review
+													at0016, 	-- Assess, educate and support the patient - discuss contributory factors to, and treatment options for erectile dysfunction
+													at0017, 	-- Consider phosphodiesterase-5 inhibitor (PDE5I) therapy
+													at0018, 	-- Continue phosphodiesterase-5 inhibitor (PDE5I) therapy
+													at0019, 	-- Refer patient for medical, surgical, or psychological management of erectile dysfunction (PDE5I contraindicated)
+													at0020]	-- Refer patient for medical, surgical, or psychological management of erectile dysfunction (PDE5I unsuccessful)
+												}
+											}
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Type 2 Diabetes -Erectile Dysfunction">
+					description = <"The National Institute for Health and Care Excellence (NICE) guideline for management of type 2 diabetes in adults provides recommendations for managing erectile dysfunction in this group of patients. Recommendations are made based on a 'Yes' or 'No' response to: Does the patient have erectile dysfunction? Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated? Has PD5EI treatment been successful? The guideline and recommendations are only valid for male patients with type 2 diabetes.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Sex">
+					description = <"Patients' gender.">
+				>
+				["at0005"] = <
+					text = <"Male">
+					description = <"Patient is male">
+				>
+				["at0006"] = <
+					text = <"Female">
+					description = <"Patient is female">
+				>
+				["at0007"] = <
+					text = <"Does the patient have type 2 diabetes (DM2)?">
+					description = <"Whether patient has been diagnosed with type 2 diabetes.">
+				>
+				["at0008"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Does the patient have erectile dysfunction (ED)?">
+					description = <"Whether patient has been diagnosed with erectile dysfunction.">
+				>
+				["at0011"] = <
+					text = <"Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated?">
+					description = <"Whether PDE5I treatment is contraindicated.">
+				>
+				["at0012"] = <
+					text = <"Has phosphodiesterase-5 inhibitor (PDE5I) treatment been successful?">
+					description = <"Whether PDE5I treatment has been successful.">
+				>
+				["at0013"] = <
+					text = <"Recommendation">
+					description = <"Recommendation according to NICE guideline.">
+				>
+				["at0014"] = <
+					text = <"No recommendation">
+					description = <"No applicable recommendation">
+				>
+				["at0015"] = <
+					text = <"Offer to discuss erectile dysfunction as part of of the patient's annual review">
+					description = <"Patient has DM2 and does not have ED">
+				>
+				["at0016"] = <
+					text = <"Assess, educate and support the patient - discuss contributory factors to, and treatment options for erectile dysfunction">
+					description = <"Patient has DM2 and has ED">
+				>
+				["at0017"] = <
+					text = <"Consider phosphodiesterase-5 inhibitor (PDE5I) therapy">
+					description = <"Patient has DM2 with ED, and PDE5I is not contraindicated">
+				>
+				["at0018"] = <
+					text = <"Continue phosphodiesterase-5 inhibitor (PDE5I) therapy">
+					description = <"Patient has DM2 with ED and is eligible for, and responsive to PDE5I therapy">
+				>
+				["at0019"] = <
+					text = <"Refer patient for medical, surgical, or psychological management of erectile dysfunction (PDE5I contraindicated)">
+					description = <"Patient has DM2 with ED, and PDE5I therapy is contraindicated">
+				>
+				["at0020"] = <
+					text = <"Refer patient for medical, surgical, or psychological management of erectile dysfunction (PDE5I unsuccessful)">
+					description = <"Patient has DM2 with ED, and PDE5I therapy has been unsuccessful">
+				>
+				["at0021"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording.">
+				>
+			>
+		>
+	>

@@ -1,0 +1,162 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"DM_erectile_dysfunction.v0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"PDE5", "diabetes mellitus", "NICE", "ED">
+				misuse = <"Not intended for patients with type 1 diabetes.
+Not a diagnostic tool.">
+				purpose = <"To offer recommendations for management of erectile dysfunction in patients with type 2 diabetes.">
+				use = <"To record data about patient's eligibility for phosphodiesterase-5 inhibitor (PDE5I) treatment or otherwise, and whether PDE5I treatment was or was not successful in candidate patients with erectile dysfunction.
+Recommendations are made based on a 'Yes' or 'No' response to: Does the patient have erectile dysfunction? Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated? Has PD5EI treatment been successful? 
+The guideline and recommendations are only valid for male patients with type 2 diabetes.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2017-07-11">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"1. NICE. Type 2 diabetes in adults: management. NG28. December 2015.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.diabetes_erectile_dysfunction.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0010]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0012]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0009"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.diabetes_erectile_dysfunction.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
+					>
+				>
+			>
+		>
+		default_actions = <"$gt0010=local::at0014|No recommendation|",...>
+		rules = <
+			["gt0011"] = (RULE) <
+				when = <"($gt0003==local::at0006|Female|)||(($gt0003==null)||(($gt0004==local::at0009|No|)||($gt0004==null)))",...>
+				then = <"$gt0010=local::at0014|No recommendation|",...>
+				priority = <7>
+			>
+			["gt0012"] = (RULE) <
+				when = <"!fired($gt0013)", "$gt0004==local::at0008|Yes|", "$gt0003==local::at0005|Male|">
+				then = <"$gt0010=local::at0015|Offer to discuss erectile dysfunction as part of of the patient's annual review|",...>
+				priority = <6>
+			>
+			["gt0013"] = (RULE) <
+				when = <"!fired($gt0015)", "!fired($gt0014)", "$gt0005==local::at0008|Yes|", "$gt0004==local::at0008|Yes|", "$gt0003==local::at0005|Male|">
+				then = <"$gt0010=local::at0016|Assess, educate and support the patient - discuss contributory factors to, and treatment options for erectile dysfunction|",...>
+				priority = <5>
+			>
+			["gt0014"] = (RULE) <
+				when = <"!fired($gt0017)", "!fired($gt0016)", "$gt0006==local::at0009|No|", "$gt0005==local::at0008|Yes|", "$gt0004==local::at0008|Yes|", "$gt0003==local::at0005|Male|">
+				then = <"$gt0010=local::at0017|Consider phosphodiesterase-5 inhibitor (PDE5I) therapy|",...>
+				priority = <4>
+			>
+			["gt0015"] = (RULE) <
+				when = <"$gt0006==local::at0008|Yes|", "$gt0005==local::at0008|Yes|", "$gt0004==local::at0008|Yes|", "$gt0003==local::at0005|Male|">
+				then = <"$gt0010=local::at0019|Refer patient for medical, surgical, or psychological management of erectile dysfunction (PDE5I contraindicated)|",...>
+				priority = <3>
+			>
+			["gt0016"] = (RULE) <
+				when = <"$gt0007==local::at0009|No|", "$gt0006==local::at0009|No|", "$gt0005==local::at0008|Yes|", "$gt0004==local::at0008|Yes|", "$gt0003==local::at0005|Male|">
+				then = <"$gt0010=local::at0020|Refer patient for medical, surgical, or psychological management of erectile dysfunction (PDE5I unsuccessful)|",...>
+				priority = <2>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0007==local::at0008|Yes|", "$gt0006==local::at0009|No|", "$gt0005==local::at0008|Yes|", "$gt0004==local::at0008|Yes|", "$gt0003==local::at0005|Male|">
+				then = <"$gt0010=local::at0018|Continue phosphodiesterase-5 inhibitor (PDE5I) therapy|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Erectile Dysfunction in type 2 Diabetes">
+						description = <"The National Institute for Health and Care Excellence (NICE) guideline for management of type 2 diabetes in adults provides recommendations for managing erectile dysfunction in this group of patients. Recommendations are made based on a 'Yes' or 'No' response to: Does the patient have erectile dysfunction? Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated? Has PD5EI treatment been successful? The guideline and recommendations are only valid for male patients with type 2 diabetes.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Sex">
+						description = <"*">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Does the patient have type 2 diabetes (DM2)?">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Does the patient have erectile dysfunction (ED)?">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated?">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Has phosphodiesterase-5 inhibitor (PDE5I) treatment been successful?">
+						description = <"*">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Recommendation">
+						description = <"*">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Set Sex = Female or Not specified, DM2 = No or Not specified">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Set DM2 = Yes, ED = No or Not specified">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Set DM2 = Yes, ED = Yes">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Set DM2 = Yes, ED = Yes, PDE5I contraindicated = No">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Set DM2 = Yes, ED = Yes, PDE5I contraindicated = Yes">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Set DM2 = Yes, ED = Yes, PDE5I contraindicated = No, PDE5I successful = No">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Set DM2 = Yes, ED = Yes, PDE5I contraindicated = No, PDE5I successful = Yes">
+					>
+				>
+			>
+		>
+	>
+>
