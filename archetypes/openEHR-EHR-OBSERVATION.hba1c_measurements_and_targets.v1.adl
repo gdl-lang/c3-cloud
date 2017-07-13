@@ -1,0 +1,231 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.hba1c_measurements_and_targets.v1
+
+concept
+	[at0000]	-- HbA1c measurements and targets
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-12">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To provide guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+			use = <"Use as guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.
+
+
+Hb1Ac target 
+- with treatment carrying no risk of hypoglycemia: 48 mmol/mol
+- with treatment carrying risk of hypoglycemia: 53 mmol/mol
+
+If the patient is old/frail or have reduced life expectancy or high risk due to consequences of hypoglycemia - consider relaxing the HbA1c target.">
+			keywords = <"Hb1Ac", "diabetes", "type 2 diabetes", "NICE", "NICE guidelines">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).">
+		["MD5-CAM-1.0.1"] = <"FF28598271C1D084288AD45E52BC7052">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- HbA1c measurements and targets
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Disturbed erythrocyte turnover or abnormal haemoglobin?
+										value matches {
+											0|[local::at0007], 	-- No
+											1|[local::at0008]  	-- Yes
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Unexplained discrepancies between HbA1c and glucose measurements?
+										value matches {
+											0|[local::at0011], 	-- No
+											1|[local::at0012]  	-- Yes
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Treatment target
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0016, 	-- HbA1c 48 mmol/mol
+													at0017, 	-- HbA1c 53 mmol/mol
+													at0030]	-- N/A
+												}
+											}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Treatment with risk of hypoglycemia?
+										value matches {
+											0|[local::at0019], 	-- No
+											1|[local::at0021]  	-- Yes
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Old or frail patient, reduced life expectancy or high risk of consequences of hypoglycemia?
+										value matches {
+											0|[local::at0022], 	-- No
+											1|[local::at0023]  	-- Yes
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- On target (treatment)?
+										value matches {
+											0|[local::at0026], 	-- No
+											1|[local::at0027]  	-- Yes
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Recommendation
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0015, 	-- Estimate trends in glucose control using p-glucose profiles or total glycylated haemoglobin (if abnormal hemoglobin), or by fructosamine estimation. Seek advice from specialists in diabetes or clinical chemistry
+													at0024, 	-- Consider relaxing HbA1c target
+													at0028, 	-- Measure HbA1c at 6-monthly intervals. If well below target without hypoglycemia, maintain treatment. Be aware of other reasons for low HbA1c such as deteriorating kidney function or sudden weight loss
+													at0029]	-- Intensify drug treatment and reinforce advice on lifestyle, diet and adherence to treatment
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"HbA1c measurements and targets">
+					description = <"To provide guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.
+">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Disturbed erythrocyte turnover or abnormal haemoglobin?">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Unexplained discrepancies between HbA1c and glucose measurements?">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Treatment target">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Recommendation">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Estimate trends in glucose control using p-glucose profiles or total glycylated haemoglobin (if abnormal hemoglobin), or by fructosamine estimation. Seek advice from specialists in diabetes or clinical chemistry">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"HbA1c 48 mmol/mol">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"HbA1c 53 mmol/mol">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Treatment with risk of hypoglycemia?">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Old or frail patient, reduced life expectancy or high risk of consequences of hypoglycemia?">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Consider relaxing HbA1c target">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"On target (treatment)?">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Measure HbA1c at 6-monthly intervals. If well below target without hypoglycemia, maintain treatment. Be aware of other reasons for low HbA1c such as deteriorating kidney function or sudden weight loss">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Intensify drug treatment and reinforce advice on lifestyle, diet and adherence to treatment">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+			>
+		>
+	>

@@ -1,0 +1,172 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Hb1Ac_measurement_target.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"Hb1Ac", "diabetes", "type 2 diabetes", "NICE", "NICE guidelines">
+				purpose = <"To provide guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+				use = <"Use as guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.
+
+
+Hb1Ac target 
+- with treatment carrying no risk of hypoglycemia: 48 mmol/mol
+- with treatment carrying risk of hypoglycemia: 53 mmol/mol
+
+If the patient is old/frail or have reduced life expectancy or high risk due to consequences of hypoglycemia - consider relaxing the HbA1c target.">
+			>
+		>
+		original_author = <
+			["date"] = <"2017-07-12">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Dennis Forslund">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.hba1c_measurements_and_targets.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0018]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0025]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0020]">
+					>
+				>
+			>
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.hba1c_measurements_and_targets.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0014]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0012"] = (RULE) <
+				when = <"($gt0005==1|local::at0012|Yes|)||($gt0004==1|local::at0008|Yes|)",...>
+				then = <"$gt0010=local::at0030|N/A|", "$gt0011=local::at0015|Estimate trends in glucose control using p-glucose profiles or total glycylated haemoglobin (if abnormal hemoglobin), or by fructosamine estimation. Seek advice from specialists in diabetes or clinical chemistry|">
+				priority = <7>
+			>
+			["gt0013"] = (RULE) <
+				when = <"$gt0008==1|local::at0023|Yes|", "$gt0006==1|local::at0021|Yes|", "$gt0005==0|local::at0011|No|", "$gt0004==0|local::at0007|No|">
+				then = <"$gt0010=local::at0017|HbA1c 53 mmol/mol|", "$gt0011=local::at0024|Consider relaxing HbA1c target|">
+				priority = <6>
+			>
+			["gt0014"] = (RULE) <
+				when = <"$gt0004==0|local::at0007|No|", "$gt0005==0|local::at0011|No|", "$gt0006==1|local::at0021|Yes|", "$gt0008==0|local::at0022|No|", "$gt0007==1|local::at0027|Yes|">
+				then = <"$gt0010=local::at0017|HbA1c 53 mmol/mol|", "$gt0011=local::at0028|Measure HbA1c at 6-monthly intervals. If well below target without hypoglycemia, maintain treatment. Be aware of other reasons for low HbA1c such as deteriorating kidney function or sudden weight loss|">
+				priority = <5>
+			>
+			["gt0015"] = (RULE) <
+				when = <"$gt0005==0|local::at0011|No|", "$gt0004==0|local::at0007|No|", "$gt0006==1|local::at0021|Yes|", "$gt0008==0|local::at0022|No|", "$gt0007==0|local::at0026|No|">
+				then = <"$gt0010=local::at0017|HbA1c 53 mmol/mol|", "$gt0011=local::at0029|Intensify drug treatment and reinforce advice on lifestyle, diet and adherence to treatment|">
+				priority = <4>
+			>
+			["gt0016"] = (RULE) <
+				when = <"$gt0005==0|local::at0011|No|", "$gt0004==0|local::at0007|No|", "$gt0006==0|local::at0019|No|", "$gt0008==1|local::at0023|Yes|">
+				then = <"$gt0010=local::at0016|HbA1c 48 mmol/mol|", "$gt0011=local::at0024|Consider relaxing HbA1c target|">
+				priority = <3>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0005==0|local::at0011|No|", "$gt0004==0|local::at0007|No|", "$gt0006==0|local::at0019|No|", "$gt0008==0|local::at0022|No|", "$gt0007==1|local::at0027|Yes|">
+				then = <"$gt0010=local::at0016|HbA1c 48 mmol/mol|", "$gt0011=local::at0028|Measure HbA1c at 6-monthly intervals. If well below target without hypoglycemia, maintain treatment. Be aware of other reasons for low HbA1c such as deteriorating kidney function or sudden weight loss|">
+				priority = <2>
+			>
+			["gt0018"] = (RULE) <
+				when = <"$gt0005==0|local::at0011|No|", "$gt0004==0|local::at0007|No|", "$gt0006==0|local::at0019|No|", "$gt0008==0|local::at0022|No|", "$gt0007==0|local::at0026|No|">
+				then = <"$gt0010=local::at0016|HbA1c 48 mmol/mol|", "$gt0011=local::at0029|Intensify drug treatment and reinforce advice on lifestyle, diet and adherence to treatment|">
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"HbA1c measurements and targets">
+						description = <"To provide guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.
+">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Disturbed erythrocyte turnover or abnormal haemoglobin?">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Unexplained discrepancies between HbA1c and glucose measurements?">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Treatment with risk of hypoglycemia?">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"On target (treatment)?">
+						description = <"*">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Old or frail patient, reduced life expectancy or high risk of consequences of hypoglycemia?">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+					>
+					["gt0010"] = (TERM) <
+						text = <"Treatment target">
+						description = <"*">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Recommendation">
+						description = <"*">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Set disturbed erythrocyte or discrepancies to Yes">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Set target to 53 mmol and recommendation to relax target">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Set target to 53 mmol and recommendation if on target">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Set target to 53 mmol and recommendation if not on target">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Set target to 48 mmol and recommendation to relax target">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Set target to 48 mmol and recommendation if on target">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Set target to 48 mmol and recommendation if not on target">
+					>
+				>
+			>
+		>
+	>
+>
