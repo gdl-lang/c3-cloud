@@ -29,7 +29,7 @@ Self-monitoring is not recommended if the patient is 1) not prescribed treatment
 	other_details = <
 		["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).
 ">
-		["MD5-CAM-1.0.1"] = <"2545435CA36E0DB3DC62FE479179D2DF">
+		["MD5-CAM-1.0.1"] = <"2D772E76EF0C5026361A298336E54262">
 	>
 
 definition
@@ -76,7 +76,7 @@ definition
 												defining_code matches {
 													[local::
 													at0012, 	-- N/A
-													at0013]	-- Be aware of risk of worsening hypoglycemia
+													at0013]	-- Be aware of risk of worsening hypoglycemia due to acute intercurrent illness
 												}
 											}
 										}
@@ -144,7 +144,7 @@ ontology
 					description = <"Not applicable">
 				>
 				["at0013"] = <
-					text = <"Be aware of risk of worsening hypoglycemia">
+					text = <"Be aware of risk of worsening hypoglycemia due to acute intercurrent illness">
 					description = <"Acute intercurrent illness">
 				>
 				["at0014"] = <
