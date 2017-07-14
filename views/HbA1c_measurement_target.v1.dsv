@@ -13,7 +13,7 @@
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
 <script id="decision-support-view" type="application/json">{
-  "dsViewId": "Hb1Ac_measurement_target.v1",
+  "dsViewId": "HbA1c_measurement_target.v1",
   "language": {
     "originalLanguage": {
       "terminologyId": {
@@ -24,9 +24,10 @@
     }
   },
   "decisionSupportViewDefinitions": {
+    "sv": {},
     "en": {
       "name": "HbA1c measurements and targets",
-      "description": "NICE Guidelines on type 2 diabetes HbA1c measurement and target "
+      "description": "NICE Guidelines on type 2 diabetes HbA1c measurement and target"
     }
   },
   "resourceDescription": {
@@ -38,10 +39,22 @@
     },
     "otherContributors": [],
     "details": {
+      "sv": {
+        "purpose": "*(en) To provide guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "keywords": [
+          "*(en) HbA1c",
+          "*(en) diabetes",
+          "*(en) type 2 diabetes",
+          "*(en) NICE",
+          "*(en) NICE guidelines"
+        ],
+        "use": "*(en) Use as guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.\n\n\nHb1Ac target \n- with treatment carrying no risk of hypoglycemia: 48 mmol/mol\n- with treatment carrying risk of hypoglycemia: 53 mmol/mol\n\nIf the patient is old/frail or have reduced life expectancy or high risk due to consequences of hypoglycemia - consider relaxing the HbA1c target.",
+        "copyright": "Cambio Healthcare Systems"
+      },
       "en": {
         "purpose": "To provide guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
         "keywords": [
-          "Hb1Ac",
+          "HbA1c",
           "diabetes",
           "type 2 diabetes",
           "NICE",
@@ -61,6 +74,15 @@
   ],
   "alertBindings": {},
   "termDefinitions": {
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "*(en) References"
+        }
+      }
+    },
     "en": {
       "id": "en",
       "terms": {
@@ -87,6 +109,7 @@
 <#assign unexplained_discrepancies_between_hba1c_and_glucose_measurements__def = hba1c_measurements_and_targets_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
 <#assign treatment_with_risk_of_hypoglycemia__def = hba1c_measurements_and_targets_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0018}']">
 <#assign old_or_frail_patient__reduced_life_expectancy_or_high_risk_of_consequences_of_hypoglycemia__def = hba1c_measurements_and_targets_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}']">
+<#assign event_time_def = hba1c_measurements_and_targets_entry_def + ".elements['/data/events/time']">
 <#assign treatment_target_cds_data = hba1c_measurements_and_targets_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
 <#assign recommendation_cds_data = hba1c_measurements_and_targets_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign on_target__treatment___cds_data = hba1c_measurements_and_targets_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0025}']">
@@ -94,6 +117,7 @@
 <#assign unexplained_discrepancies_between_hba1c_and_glucose_measurements__cds_data = hba1c_measurements_and_targets_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
 <#assign treatment_with_risk_of_hypoglycemia__cds_data = hba1c_measurements_and_targets_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0018}']">
 <#assign old_or_frail_patient__reduced_life_expectancy_or_high_risk_of_consequences_of_hypoglycemia__cds_data = hba1c_measurements_and_targets_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}']">
+<#assign event_time_cds_data = hba1c_measurements_and_targets_entry_cds_data + "[0].elements['/data/events/time']">
 <#assign treatment_target_ehr_data = hba1c_measurements_and_targets_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
 <#assign recommendation_ehr_data = hba1c_measurements_and_targets_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign on_target__treatment___ehr_data = hba1c_measurements_and_targets_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0025}']">
@@ -101,6 +125,7 @@
 <#assign unexplained_discrepancies_between_hba1c_and_glucose_measurements__ehr_data = hba1c_measurements_and_targets_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
 <#assign treatment_with_risk_of_hypoglycemia__ehr_data = hba1c_measurements_and_targets_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0018}']">
 <#assign old_or_frail_patient__reduced_life_expectancy_or_high_risk_of_consequences_of_hypoglycemia__ehr_data = hba1c_measurements_and_targets_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}']">
+<#assign event_time_ehr_data = hba1c_measurements_and_targets_entry_ehr_data + "[0].elements['/data/events/time']">
 
 <script> 
 angular.module('cds_app').controller('Hb1Ac_measurement_target_Ctrl', function($scope, $window){
@@ -116,6 +141,7 @@ angular.module('cds_app').controller('Hb1Ac_measurement_target_Ctrl', function($
 </script>
 
 <div ng-show="ready" ng-controller="Hb1Ac_measurement_target_Ctrl">
+<div ng-show="ready">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -149,7 +175,7 @@ angular.module('cds_app').controller('Hb1Ac_measurement_target_Ctrl', function($
       <input type="radio" value="{{key}}" ng-model="${treatment_with_risk_of_hypoglycemia__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-  <div class="row collapse" title="{{${old_or_frail_patient__reduced_life_expectancy_or_high_risk_of_consequences_of_hypoglycemia__def}.description}}">
+<div class="row collapse" title="{{${old_or_frail_patient__reduced_life_expectancy_or_high_risk_of_consequences_of_hypoglycemia__def}.description}}">
     <div class="medium-7 columns">
       <label>{{${old_or_frail_patient__reduced_life_expectancy_or_high_risk_of_consequences_of_hypoglycemia__def}.name}}</label>
     </div>

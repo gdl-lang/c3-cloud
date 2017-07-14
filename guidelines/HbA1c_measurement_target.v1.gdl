@@ -1,6 +1,6 @@
 (GUIDE) <
 	gdl_version = <"0.1">
-	id = <"Hb1Ac_measurement_target.v1">
+	id = <"HbA1c_measurement_target.v1">
 	concept = <"gt0001">
 	language = (LANGUAGE) <
 		original_language = <[ISO_639-1::en]>
@@ -53,6 +53,7 @@ If the patient is old/frail or have reduced life expectancy or high risk due to 
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0020]">
 					>
 				>
+				predicates = <"max(/data/events/time)",...>
 			>
 			["gt0003"] = (ARCHETYPE_BINDING) <
 				archetype_id = <"openEHR-EHR-OBSERVATION.hba1c_measurements_and_targets.v1">
