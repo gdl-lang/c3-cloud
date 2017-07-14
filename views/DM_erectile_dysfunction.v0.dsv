@@ -1,14 +1,13 @@
-<!DOCTYPE html><html ng-app="cds_app">
-<head>
+<!DOCTYPE html><html ng-app="cds_app"><head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
-<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -26,7 +25,7 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Erectile Dysfunction in type 2 Diabetes",
-      "description": "The National Institute for Health and Care Excellence (NICE) guideline for management of type 2 diabetes in adults provides recommendations for managing erectile dysfunction in this group of patients. Recommendations are made based on a \u0027Yes\u0027 or \u0027No\u0027 response to: Does the patient have erectile dysfunction? Is phosphodiesterase-5 inhibitor (PDE5I) treatment contraindicated? Has PD5EI treatment been successful? The guideline and recommendations are only valid for male patients with type 2 diabetes."
+      "description": "The NICE guideline for management of type 2 diabetes in adults provides recommendations for managing erectile dysfunction in this patient group, including the role of treatment with phosphodiesterase-5 inhibitor class drugs."
     }
   },
   "resourceDescription": {
@@ -320,4 +319,5 @@ angular.module('cds_app').controller('Erectile_dysfunction_Ctrl', function($scop
 
 
 </div>
+
 </body></html>
