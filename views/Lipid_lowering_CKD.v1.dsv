@@ -1,0 +1,95 @@
+<html><head><script id="decision-support-view" type="application/json">{
+  "dsViewId": "Lipid_lowering_CKD.v1",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "sv": {},
+    "en": {
+      "name": "NICE Guideline - diabetes",
+      "description": "Lipid lowering treatment with/without CKD"
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-07-14",
+      "name": "Dennis Forslund",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [],
+    "details": {
+      "sv": {
+        "purpose": "*(en) To provide guidance on lipid lowering treatment among patients with type 2 diabetes with/without chronic kidney disease, in accordance with the NICE Guidelines.",
+        "keywords": [
+          "*(en) CKD",
+          "*(en) chronic kidney disease",
+          "*(en) diabetes",
+          "*(en) GFR",
+          "*(en) eGFR",
+          "*(en) CVD",
+          "*(en) cardiovascular disease",
+          "*(en) statin",
+          "*(en) lipid lowering",
+          "*(en) NICE",
+          "*(en) NICE guidelines"
+        ],
+        "use": "*(en) Use as guidance on lipid lowering treatment among patients with type 2 diabetes with/without chronic kidney disease, in accordance with the NICE Guidelines.",
+        "copyright": "Cambio Healthcare Systems"
+      },
+      "en": {
+        "purpose": "To provide guidance on lipid lowering treatment among patients with type 2 diabetes with/without chronic kidney disease, in accordance with the NICE Guidelines.",
+        "keywords": [
+          "CKD",
+          "chronic kidney disease",
+          "diabetes",
+          "GFR",
+          "eGFR",
+          "CVD",
+          "cardiovascular disease",
+          "statin",
+          "lipid lowering",
+          "NICE",
+          "NICE guidelines"
+        ],
+        "use": "Use as guidance on lipid lowering treatment among patients with type 2 diabetes with/without chronic kidney disease, in accordance with the NICE Guidelines.",
+        "copyright": "Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28)."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "Lipid_lowering_CKD.v1"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "*(en) References"
+        }
+      }
+    },
+    "en": {
+      "id": "en",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    }
+  },
+  "resultTemplates": []
+}</script></head><body></body></html>
