@@ -1,0 +1,193 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Lipid_modification_therapy_follow_up_and_monitoring.v0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"NICE", "NICE guidelines", "diabetes", "lipids", "statin", "HDL", "LDL", "cholesterol">
+				purpose = <"To provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+				use = <"Use to provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+			>
+		>
+		original_author = <
+			["date"] = <"2017-07-16">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Dennis Forslund">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).
+">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lipid_modification_therapy_follow_up_and_monitoring.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0019]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0024]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0034]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0035]">
+					>
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0043]">
+					>
+				>
+			>
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lipid_modification_therapy_follow_up_and_monitoring.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0010]">
+					>
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
+					>
+					["gt0013"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0016]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+		>
+		rules = <
+			["gt0014"] = (RULE) <
+				when = <"$gt0004==0|local::at0005|No|",...>
+				then = <"$gt0005=local::at0020|Liver transaminases should be measured within three months of starting treatment as well as at 12 months, but not after that unless clinically indicated|", "$gt0006=local::at0025|Consider continuation|">
+				priority = <8>
+			>
+			["gt0015"] = (RULE) <
+				when = <"$gt0004==1|local::at0006|Yes|",...>
+				then = <"$gt0005=local::at0020|Liver transaminases should be measured within three months of starting treatment as well as at 12 months, but not after that unless clinically indicated|", "$gt0006=local::at0026|STOP statin|">
+				priority = <7>
+			>
+			["gt0016"] = (RULE) <
+				when = <"$gt0010==0|local::at0008|No |",...>
+				then = <"$gt0007=local::at0040|Continue statins|",...>
+				priority = <6>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0010==1|local::at0009|Yes|", "$gt0011==0|local::at0011|No|">
+				then = <"$gt0007=local::at0041|Suspect other non-statin related causes of muscle pain|",...>
+				priority = <5>
+			>
+			["gt0018"] = (RULE) <
+				when = <"$gt0010==1|local::at0009|Yes|", "$gt0011==1|local::at0012|Yes|">
+				then = <"$gt0007=local::at0042|Suspect statin side effect as cause of muscle pain - measure CK|",...>
+				priority = <4>
+			>
+			["gt0019"] = (RULE) <
+				when = <"$gt0012==0|local::at0014|No|",...>
+				then = <"$gt0008=local::at0036|Offer annual review of treatment goals including control of non-HDL cholesterol. Discuss with the patient the benefits/risks of changing to high intensity treatment.|", "$gt0009=local::at0048|Either remain in the low/medium intensity or modify dose to high intensity|">
+				priority = <3>
+			>
+			["gt0020"] = (RULE) <
+				when = <"$gt0012==1|local::at0015|Yes|", "$gt0013==0|local::at0017|No |">
+				then = <"$gt0008=local::at0037|Measure total, HDL and non-HDL cholesterol at three months in both primary and secondary prevention patients|", "$gt0009=local::at0044|Discuss adherence and timing of dose. Optimise adherence to diet and lifestyle measures. Consider increasing the dose if started on less than 80 mg of atorvastatin, and if the person is judged to be at higher risk due to comorbidities, risk score or clinical judgment|">
+				priority = <2>
+			>
+			["gt0021"] = (RULE) <
+				when = <"$gt0012==1|local::at0015|Yes|", "$gt0013==1|local::at0018|Yes|">
+				then = <"$gt0008=local::at0037|Measure total, HDL and non-HDL cholesterol at three months in both primary and secondary prevention patients|", "$gt0009=local::at0045|Continue without change and provide annual medication review with the patient|">
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Lipid modification therapy follow up and monitoring">
+						description = <"To provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Is liver transaminase level > 3 times upper limit?">
+						description = <"">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Measurement liver">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Management liver">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Management muscle pain">
+						description = <"*">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Measurement based on intensity of treatment">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Management of therapy">
+						description = <"*">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Newly developed muscle pain?">
+						description = <"*">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Pain developed within three months of starting therapy?">
+						description = <"*">
+					>
+					["gt0012"] = (TERM) <
+						text = <"High intensity treatment?">
+						description = <"*">
+					>
+					["gt0013"] = (TERM) <
+						text = <">40% reduction in non-HDL cholesterol?">
+						description = <"*">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Set measurement = liver, transaminase >3 = no">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Set measurement = liver, transaminase >3 = yes">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Set new muscle pain = no">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Set new muscle pain = yes, within 3 months of therapy start = no">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Set new muscle pain = yes, within 3 months of therapy start = yes">
+					>
+					["gt0019"] = (TERM) <
+						text = <"Set high intensity treatment = no">
+					>
+					["gt0020"] = (TERM) <
+						text = <"Set high intensity = yes, >40% non-HDL reduction = no">
+					>
+					["gt0021"] = (TERM) <
+						text = <"Set high intensity = yes, >40% non-HDL reduction = yes">
+					>
+				>
+			>
+		>
+	>
+>

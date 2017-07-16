@@ -1,0 +1,89 @@
+<html><head><script id="decision-support-view" type="application/json">{
+  "dsViewId": "Lipid_modification_therapy_follow_up_and_monitoring.v0",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "sv": {},
+    "en": {
+      "name": "Lipid modification therapy follow up and monitoring",
+      "description": "NICE Guidelines on lipid modification therapy among patients with diabetes"
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-07-16",
+      "name": "Dennis Forslund",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [],
+    "details": {
+      "sv": {
+        "purpose": "*(en) To provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "keywords": [
+          "*(en) NICE",
+          "*(en) NICE guidelines",
+          "*(en) diabetes",
+          "*(en) lipids",
+          "*(en) statin",
+          "*(en) HDL",
+          "*(en) LDL",
+          "*(en) cholesterol"
+        ],
+        "use": "*(en) Use to provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "copyright": "Cambio Healthcare Systems"
+      },
+      "en": {
+        "purpose": "To provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "keywords": [
+          "NICE",
+          "NICE guidelines",
+          "diabetes",
+          "lipids",
+          "statin",
+          "HDL",
+          "LDL",
+          "cholesterol"
+        ],
+        "use": "Use to provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "copyright": "Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28)."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "Lipid_modification_therapy_follow_up_and_monitoring.v0"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "*(en) References"
+        }
+      }
+    },
+    "en": {
+      "id": "en",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    }
+  },
+  "resultTemplates": []
+}</script></head><body></body></html>

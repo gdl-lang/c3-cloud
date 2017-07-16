@@ -1,0 +1,280 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.lipid_modification_therapy_follow_up_and_monitoring.v0
+
+concept
+	[at0000]	-- Lipid modification therapy follow up and monitoring
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-16">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+			use = <"Use to provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+			keywords = <"diabetes", "NICE", "NICE guidelines", "lipids", "cholesterol", "HDL", "LDL", "statin">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).
+">
+		["MD5-CAM-1.0.1"] = <"C997C0DCDE50421D7517984688EF1767">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Lipid modification therapy follow up and monitoring
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Is liver transaminase level > 3 times upper limit?
+										value matches {
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Newly developed muscle pain?
+										value matches {
+											0|[local::at0008], 	-- No 
+											1|[local::at0009]  	-- Yes
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Pain developed within three months of starting therapy?
+										value matches {
+											0|[local::at0011], 	-- No
+											1|[local::at0012]  	-- Yes
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- High intensity treatment?
+										value matches {
+											0|[local::at0014], 	-- No
+											1|[local::at0015]  	-- Yes
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- >40% reduction in non-HDL cholesterol?
+										value matches {
+											0|[local::at0017], 	-- No 
+											1|[local::at0018]  	-- Yes
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Measurement liver
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {[local::at0020]}		-- Liver transaminases should be measured within three months of starting treatment as well as at 12 months, but not after that unless clinically indicated
+											}
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Management liver
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0025, 	-- Consider continuation
+													at0026]	-- STOP statin
+												}
+											}
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Management muscle pain
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0040, 	-- Continue statins
+													at0041, 	-- Suspect other non-statin related causes of muscle pain
+													at0042]	-- Suspect statin side effect as cause of muscle pain - measure CK
+												}
+											}
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Measurement based on intensity of treatment
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0036, 	-- Offer annual review of treatment goals including control of non-HDL cholesterol. Discuss with the patient the benefits/risks of changing to high intensity treatment.
+													at0037]	-- Measure total, HDL and non-HDL cholesterol at three months in both primary and secondary prevention patients
+												}
+											}
+										}
+									}
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Management of therapy
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0044, 	-- Discuss adherence and timing of dose. Optimise adherence to diet and lifestyle measures. Consider increasing the dose if started on less than 80 mg of atorvastatin, and if the person is judged to be at higher risk due to comorbidities, risk score or clinical judgment
+													at0045, 	-- Continue without change and provide annual medication review with the patient
+													at0048]	-- Either remain in the low/medium intensity or modify dose to high intensity
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Lipid modification therapy follow up and monitoring">
+					description = <"To provide guidance on lipid modification therapy including follow-up and monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Is liver transaminase level > 3 times upper limit?">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Newly developed muscle pain?">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"No ">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Pain developed within three months of starting therapy?">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"High intensity treatment?">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <">40% reduction in non-HDL cholesterol?">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"No ">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Measurement liver">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Liver transaminases should be measured within three months of starting treatment as well as at 12 months, but not after that unless clinically indicated">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Management liver">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Consider continuation">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"STOP statin">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Management muscle pain">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Measurement based on intensity of treatment">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Offer annual review of treatment goals including control of non-HDL cholesterol. Discuss with the patient the benefits/risks of changing to high intensity treatment.">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Measure total, HDL and non-HDL cholesterol at three months in both primary and secondary prevention patients">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Continue statins">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Suspect other non-statin related causes of muscle pain">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Suspect statin side effect as cause of muscle pain - measure CK">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Management of therapy">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Discuss adherence and timing of dose. Optimise adherence to diet and lifestyle measures. Consider increasing the dose if started on less than 80 mg of atorvastatin, and if the person is judged to be at higher risk due to comorbidities, risk score or clinical judgment">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Continue without change and provide annual medication review with the patient">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Either remain in the low/medium intensity or modify dose to high intensity">
+					description = <"*">
+				>
+			>
+		>
+	>
