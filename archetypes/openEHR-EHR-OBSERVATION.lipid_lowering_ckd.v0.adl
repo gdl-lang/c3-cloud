@@ -26,7 +26,7 @@ description
 	other_contributors = <>
 	other_details = <
 		["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).">
-		["MD5-CAM-1.0.1"] = <"4D8A06656223125200687AFB588D3FDD">
+		["MD5-CAM-1.0.1"] = <"F79F1105DEBDEE941C966D89917664F3">
 	>
 
 definition
@@ -56,7 +56,7 @@ definition
 											1|[local::at0016]  	-- Yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- >40% reduction i non-HDL cholesterol?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- >40% reduction in non-HDL cholesterol?
 										value matches {
 											0|[local::at0017], 	-- No
 											1|[local::at0018]  	-- Yes
@@ -137,7 +137,7 @@ ontology
 					description = <"Based on measurement and evaluation in accordance with QRISK2. ">
 				>
 				["at0007"] = <
-					text = <">40% reduction i non-HDL cholesterol?">
+					text = <">40% reduction in non-HDL cholesterol?">
 					description = <"*">
 				>
 				["at0008"] = <
