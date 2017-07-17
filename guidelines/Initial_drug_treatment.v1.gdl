@@ -1,0 +1,174 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Initial_drug_treatment.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"NICE", "NICE guidelines", "diabetes", "type 2 diabetes", "metformin", "GFR", "insulin", "sulfonylurea">
+				purpose = <"To provide guidance on initial drug treatment among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+				use = <"Use to provide guidance on initial drug treatment among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+			>
+		>
+		original_author = <
+			["date"] = <"2017-07-17">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Dennis Forslund">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).
+">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.initial_drug_treatment.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0013"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0031]">
+					>
+					["gt0014"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0036]">
+					>
+				>
+			>
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.initial_drug_treatment.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0009]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0015]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0041]">
+					>
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0028]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+		>
+		rules = <
+			["gt0015"] = (RULE) <
+				when = <"$gt0004==1|local::at0007|Yes|",...>
+				then = <"$gt0013=local::at0032|Consider insulin or sulfonylurea|", "$gt0014=local::at0037|Review treatment when achieved glucose control|">
+				priority = <6>
+			>
+			["gt0016"] = (RULE) <
+				when = <"$gt0004==0|local::at0005|No |", "$gt0005==0|local::at0008|No|", "$gt0007==1|local::at0027|Yes|", "$gt0012==0|local::at0029|No|", "$gt0011==0|local::at0042|No|">
+				then = <"$gt0013=local::at0033|Offer metformin - gradually increase dose over several weeks|", "$gt0014=local::at0039|Reduce metformin|">
+				priority = <5>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0004==0|local::at0005|No |", "$gt0005==0|local::at0008|No|", "$gt0007==1|local::at0027|Yes|", "$gt0012==0|local::at0029|No|", "$gt0011==1|local::at0043|Yes|">
+				then = <"$gt0013=local::at0033|Offer metformin - gradually increase dose over several weeks|", "$gt0014=local::at0040|Stop metformin|">
+				priority = <4>
+			>
+			["gt0018"] = (RULE) <
+				when = <"$gt0004==0|local::at0005|No |", "$gt0005==0|local::at0008|No|", "$gt0007==1|local::at0027|Yes|", "$gt0012==1|local::at0030|Yes|">
+				then = <"$gt0013=local::at0033|Offer metformin - gradually increase dose over several weeks|", "$gt0014=local::at0038|Continue metformin|">
+				priority = <3>
+			>
+			["gt0019"] = (RULE) <
+				when = <"$gt0004==0|local::at0005|No |", "($gt0005==1|local::at0010|Yes|)||($gt0007==0|local::at0026|No|)", "$gt0006==0|local::at0018|No|", "$gt0008==0|local::at0016|No|">
+				then = <"$gt0013=local::at0034|Choose DPP-4 inhibitor, pioglitazone or a sulfonylurea|", "$gt0014=local::at0044|N/A|">
+				priority = <2>
+			>
+			["gt0020"] = (RULE) <
+				when = <"$gt0004==0|local::at0005|No |", "($gt0005==1|local::at0010|Yes|)||($gt0007==0|local::at0026|No|)", "($gt0006==1|local::at0019|Yes|)||($gt0008==1|local::at0017|Yes|)">
+				then = <"$gt0013=local::at0035|Choose DPP-4 inhibitor or a sulfonylurea|", "$gt0014=local::at0044|N/A|">
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Initial drug treatment">
+						description = <"To provide guidance on initial drug treatment among patients with type 2 diabetes, in accordance with the NICE Guidelines.">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Symptomatic hyperglycemia">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Metformin contraindicated">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"History of diabetic ketoacidosis, cardiac failure or hepatic impairment?">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Metformin tolerated">
+						description = <"*">
+					>
+					["gt0008"] = (TERM) <
+						text = <"History of bladder cancer or uninvestigated macroscopic hematuria?">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+					>
+					["gt0010"] = (TERM) <
+					>
+					["gt0011"] = (TERM) <
+						text = <"eGFR <30 ml/min/1.73 m^2?">
+						description = <"*">
+					>
+					["gt0012"] = (TERM) <
+						text = <"eGFR >45 ml/min/1.73 m^2?">
+						description = <"*">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Treatment recommendation">
+						description = <"*">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Management">
+						description = <"*">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Set symptomatic hyperglycemia = yes">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Set offer metformin - reduce">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Set offer metformin - stop metformin">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Set offer metformin - continue">
+					>
+					["gt0019"] = (TERM) <
+						text = <"Set choose DPP-4/pioglitazone/sulfonylurea">
+					>
+					["gt0020"] = (TERM) <
+						text = <"Set choose DPP-4/sulfonylurea">
+					>
+				>
+			>
+		>
+	>
+>

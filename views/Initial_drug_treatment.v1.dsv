@@ -1,0 +1,89 @@
+<html><head><script id="decision-support-view" type="application/json">{
+  "dsViewId": "Initial_drug_treatment.v1",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "sv": {},
+    "en": {
+      "name": "Initial drug treatment",
+      "description": "NICE Guidelines on initial drug treatment among patients with type 2 diabetes"
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-07-17",
+      "name": "Dennis Forslund",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [],
+    "details": {
+      "sv": {
+        "purpose": "*(en) To provide guidance on initial drug treatment among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "keywords": [
+          "*(en) NICE",
+          "*(en) NICE guidelines",
+          "*(en) diabetes",
+          "*(en) type 2 diabetes",
+          "*(en) metformin",
+          "*(en) GFR",
+          "*(en) insulin",
+          "*(en) sulfonylurea"
+        ],
+        "use": "*(en) Use to provide guidance on initial drug treatment among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "copyright": "Cambio Healthcare Systems"
+      },
+      "en": {
+        "purpose": "To provide guidance on initial drug treatment among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "keywords": [
+          "NICE",
+          "NICE guidelines",
+          "diabetes",
+          "type 2 diabetes",
+          "metformin",
+          "GFR",
+          "insulin",
+          "sulfonylurea"
+        ],
+        "use": "Use to provide guidance on initial drug treatment among patients with type 2 diabetes, in accordance with the NICE Guidelines.",
+        "copyright": "Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).\n"
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "Initial_drug_treatment.v1"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "*(en) References"
+        }
+      }
+    },
+    "en": {
+      "id": "en",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    }
+  },
+  "resultTemplates": []
+}</script></head><body></body></html>
