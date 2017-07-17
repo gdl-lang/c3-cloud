@@ -1,0 +1,392 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.diabetes_diabetic_foot.v0
+
+concept
+	[at0000]	-- Diabetes - Diabetic Foot
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-14">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To offer general recommendations for the prevention and management of diabetic foot problems in patients with diabetes.
+">
+			use = <"To record data about the presence of risk factors for, and determined risk status of, diabetic foot problems in persons with diabetes. Also to give recommendations for the prevention and general management of diabetic foot problems. Risk stratification and provided recommendations are based on the presence or absence of certain observable clinical findings in children, young people or adults with newly-diagnosed or long-standing diabetes.
+The named clinical findings (risk factors) are prefixed with 0, 1, 2, 3 or 4 indicating in ascending risk order: low(or no)-risk, moderate-risk, high-risk, active or life-threatening respectively. If a patient has multiple risk factors, the one associated with the highest risk level is selected.">
+			keywords = <"Charcot foot", "foot care", "foot ulcer", "limb ischemia", "neuroarthropathy">
+			misuse = <"Not a diagnostic tool.
+Not for recommendations on management of specific diabetic foot problems (diabetic foot ulcer, diabetic foot infection, Charcot arthropathy etc.).">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"NICE. Diabetic foot problems: prevention and management. NG19. August 2015.">
+		["MD5-CAM-1.0.1"] = <"A2F03BCE5704564D9C17B65A84A9E724">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Diabetes - Diabetic Foot
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Does the patient have diabetes?
+										value matches {
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Date of birth
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Patient location
+										value matches {
+											0|[local::at0009], 	-- In-patient
+											1|[local::at0010]  	-- Out-patient
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Risk factors
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0012, 	-- 4. Ulceration with fever or any signs of sepsis
+													at0013, 	-- 4. Ulceration with limb ischemia
+													at0016, 	-- 4. Clinical concern of spreading infection or deep-seated soft tissue or bone infection
+													at0017, 	-- 4. Gangrene (with or without ulceration)
+													at0018, 	-- 4. Critical limb ischemia
+													at0019, 	-- 3. Suspicion of acute Charcot arthropathy
+													at0020, 	-- 3. Unexplained hot, red, swollen foot (with or without pain)
+													at0014, 	-- 3. Ulceration
+													at0015, 	-- 2. Previous ulceration
+													at0021, 	-- 2. Previous amputation
+													at0022, 	-- 2. On renal replacement therapy
+													at0023, 	-- 2. Neuropathy with non-critical limb ischemia
+													at0024, 	-- 2. Neuropathy with callus and/or deformity
+													at0025, 	-- 2. Non-critical limb ischemia with callus and/or deformity
+													at0026, 	-- 1. Deformity
+													at0027, 	-- 1. Neuropathy
+													at0028, 	-- 1. Non-critical limb ischemia
+													at0029, 	-- 0. Callus allone
+													at0030]	-- 0. No risk factor present
+												}
+											}
+										}
+									}
+									ELEMENT[at0031] occurrences matches {0..1} matches {	-- Risk status
+										value matches {
+											0|[local::at0032], 	-- Low risk
+											1|[local::at0033], 	-- Moderate risk
+											2|[local::at0034], 	-- High risk
+											3|[local::at0035], 	-- Active diabetic foot problem
+											4|[local::at0036]  	-- Limb-threatening or life-threatening diabetic foot problem
+										}
+									}
+									CLUSTER[at0037] occurrences matches {0..1} matches {	-- Recommendations
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0038] occurrences matches {0..1} matches {	-- Referral recommendation
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0039, 	-- Immediate referral to acute services
+															at0040, 	-- Acute contact (within 24hrs) with multidisciplinary foot care team
+															at0041, 	-- Refer to foot protection service for visit within 2-4 weeks
+															at0042, 	-- Refer to foot protection service for visit within 6-8 weeks
+															at0043]	-- No referral recommendation
+														}
+													}
+												}
+											}
+											ELEMENT[at0044] occurrences matches {0..1} matches {	-- Reassessment recommendation
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0045, 	-- Immediate notification of multidisciplinary foot care team for assessment and individualized treatment plan
+															at0046, 	-- Reassess frequently as determined by multidisciplinary foot care team
+															at0047, 	-- Reassess foot problems every 1-2 months if no immediate concern, 1-2 weeks if there is immediate concern (more frequently if patient unable to check own feet)
+															at0048, 	-- Reassess foot problems every 3-6 months (more frequently if patient unable to check own feet)
+															at0049, 	-- Reassess foot annually and give basic foot care advice to patient and/or carers
+															at0050, 	-- Reassess foot annually and provide foot care information and advice
+															at0051]	-- Reassess foot at least annually, and if foot problems arise, or if admitted to hospital, or if there is any change in status while in hospital
+														}
+													}
+												}
+											}
+											ELEMENT[at0052] occurrences matches {0..1} matches {	-- Other recommendation
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0053, 	-- Further investigation and treatment may be required because of increased risk of cardiovascular disease
+															at0054, 	-- In-patients should receive a pressure redistribution device to offload heel pressure and foot protection team notified at time of discharge
+															at0055]	-- Inform about: individual risk of progression, foot care, foot emergencies and who to contact, footwear advice and importance of blood glucose control
+														}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0056] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diabetes - Diabetic Foot">
+					description = <"The National Institute for Health and Care Excellence (NICE) guideline for prevention and management of diabetic foot problems provides general recommendations for preventing and managing diabetic foot in children, young people and adults. Recommendations are made based on the person's age, whether admitted to hospital or an out-patient, and the determined risk status based on the presence or absence of one or more clincal findings.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Does the patient have diabetes?">
+					description = <"Whether patient has been diagnosed with diabetes">
+				>
+				["at0005"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Date of birth">
+					description = <"The person's date of birth">
+				>
+				["at0008"] = <
+					text = <"Patient location">
+					description = <"Whether the patient is on hospital admission or not">
+				>
+				["at0009"] = <
+					text = <"In-patient">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Out-patient">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Risk factors">
+					description = <"Observable risk factors for diabetic foot problems">
+				>
+				["at0012"] = <
+					text = <"4. Ulceration with fever or any signs of sepsis">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"4. Ulceration with limb ischemia">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"3. Ulceration">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"2. Previous ulceration">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"4. Clinical concern of spreading infection or deep-seated soft tissue or bone infection">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"4. Gangrene (with or without ulceration)">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"4. Critical limb ischemia">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"3. Suspicion of acute Charcot arthropathy">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"3. Unexplained hot, red, swollen foot (with or without pain)">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"2. Previous amputation">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"2. On renal replacement therapy">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"2. Neuropathy with non-critical limb ischemia">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"2. Neuropathy with callus and/or deformity">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"2. Non-critical limb ischemia with callus and/or deformity">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"1. Deformity">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"1. Neuropathy">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"1. Non-critical limb ischemia">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"0. Callus allone">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"0. No risk factor present">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Risk status">
+					description = <"Determined risk of developing a diabetic foot problem">
+				>
+				["at0032"] = <
+					text = <"Low risk">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Moderate risk">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"High risk">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Active diabetic foot problem">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Limb-threatening or life-threatening diabetic foot problem">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Recommendations">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Referral recommendation">
+					description = <"Recommendations for referral">
+				>
+				["at0039"] = <
+					text = <"Immediate referral to acute services">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Acute contact (within 24hrs) with multidisciplinary foot care team">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Refer to foot protection service for visit within 2-4 weeks">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Refer to foot protection service for visit within 6-8 weeks">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"No referral recommendation">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Reassessment recommendation">
+					description = <"Recommendations for foot reassessment">
+				>
+				["at0045"] = <
+					text = <"Immediate notification of multidisciplinary foot care team for assessment and individualized treatment plan">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Reassess frequently as determined by multidisciplinary foot care team">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Reassess foot problems every 1-2 months if no immediate concern, 1-2 weeks if there is immediate concern (more frequently if patient unable to check own feet)">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Reassess foot problems every 3-6 months (more frequently if patient unable to check own feet)">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Reassess foot annually and give basic foot care advice to patient and/or carers">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Reassess foot annually and provide foot care information and advice">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Reassess foot at least annually, and if foot problems arise, or if admitted to hospital, or if there is any change in status while in hospital">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Other recommendation">
+					description = <"Additional recommendations">
+				>
+				["at0053"] = <
+					text = <"Further investigation and treatment may be required because of increased risk of cardiovascular disease">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"In-patients should receive a pressure redistribution device to offload heel pressure and foot protection team notified at time of discharge">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Inform about: individual risk of progression, foot care, foot emergencies and who to contact, footwear advice and importance of blood glucose control">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
+				>
+			>
+		>
+	>

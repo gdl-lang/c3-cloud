@@ -1,0 +1,172 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"DM_diabetic_foot.v0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"Charcot foot", "foot care", "foot ulcer", "limb ischemia", "neuroarthropathy">
+				misuse = <"Not a diagnostic tool.
+Not for recommendations on management of specific diabetic foot problems (diabetic foot ulcer, diabetic foot infection, Charcot arthropathy etc.).">
+				purpose = <"To offer general recommendations for the prevention and management of diabetic foot problems in patients with diabetes.">
+				use = <"To record data about the presence of risk factors for, and determined risk status of, diabetic foot problems in persons with diabetes. Also to give recommendations for the prevention and general management of diabetic foot problems. Risk stratification and provided recommendations are based on the presence or absence of certain observable clinical findings in children, young people or adults with newly-diagnosed or long-standing diabetes.
+The named clinical findings (risk factors) are prefixed with 0, 1, 2, 3 or 4 indicating in ascending risk order: low(or no)-risk, moderate-risk, high-risk, active or life-threatening respectively. If a patient has multiple risk factors, the one associated with the highest risk level is selected.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2017-07-14">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"NICE. Diabetic foot problems: prevention and management. NG19. August 2015.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.diabetes_diabetic_foot.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0007"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.diabetes_diabetic_foot.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0031]">
+					>
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0037]/items[at0038]">
+					>
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0037]/items[at0044]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0037]/items[at0052]">
+					>
+				>
+			>
+		>
+		pre_conditions = <"$gt0003==1|local::at0006|Yes|",...>
+		rules = <
+			["gt0012"] = (RULE) <
+				when = <"($gt0006==local::at0029|0. Callus allone|)||($gt0006==local::at0030|0. No risk factor present|)", "$gt0004.value>($currentDateTime.value-12,a)">
+				then = <"$gt0011=local::at0055|Inform about: individual risk of progression, foot care, foot emergencies and who to contact, footwear advice and importance of blood glucose control|", "$gt0010=local::at0049|Reassess foot annually and give basic foot care advice to patient and/or carers|", "$gt0009=local::at0043|No referral recommendation|", "$gt0008=0|local::at0032|Low risk|">
+				priority = <7>
+			>
+			["gt0013"] = (RULE) <
+				when = <"($gt0006==local::at0027|1. Neuropathy|)||(($gt0006==local::at0026|1. Deformity|)||($gt0006==local::at0028|1. Non-critical limb ischemia|))",...>
+				then = <"$gt0011=local::at0054|In-patients should receive a pressure redistribution device to offload heel pressure and foot protection team notified at time of discharge|", "$gt0010=local::at0048|Reassess foot problems every 3-6 months (more frequently if patient unable to check own feet)|", "$gt0009=local::at0042|Refer to foot protection service for visit within 6-8 weeks|", "$gt0008=1|local::at0033|Moderate risk|">
+				priority = <4>
+			>
+			["gt0014"] = (RULE) <
+				when = <"($gt0006==local::at0021|2. Previous amputation|)||(($gt0006==local::at0015|2. Previous ulceration|)||(($gt0006==local::at0022|2. On renal replacement therapy|)||(($gt0006==local::at0025|2. Non-critical limb ischemia with callus and/or deformity|)||(($gt0006==local::at0024|2. Neuropathy with callus and/or deformity|)||($gt0006==local::at0023|2. Neuropathy with non-critical limb ischemia|)))))",...>
+				then = <"$gt0011=local::at0054|In-patients should receive a pressure redistribution device to offload heel pressure and foot protection team notified at time of discharge|", "$gt0010=local::at0047|Reassess foot problems every 1-2 months if no immediate concern, 1-2 weeks if there is immediate concern (more frequently if patient unable to check own feet)|", "$gt0009=local::at0041|Refer to foot protection service for visit within 2-4 weeks|", "$gt0008=2|local::at0034|High risk|">
+				priority = <3>
+			>
+			["gt0015"] = (RULE) <
+				when = <"($gt0006==local::at0019|3. Suspicion of acute Charcot arthropathy|)||(($gt0006==local::at0014|3. Ulceration|)||($gt0006==local::at0020|3. Unexplained hot, red, swollen foot (with or without pain)|))",...>
+				then = <"$gt0011=local::at0053|Further investigation and treatment may be required because of increased risk of cardiovascular disease|", "$gt0010=local::at0046|Reassess frequently as determined by multidisciplinary foot care team|", "$gt0009=local::at0040|Acute contact (within 24hrs) with multidisciplinary foot care team|", "$gt0008=3|local::at0035|Active diabetic foot problem|">
+				priority = <2>
+			>
+			["gt0016"] = (RULE) <
+				when = <"($gt0006==local::at0018|Critical limb ischemia|)||(($gt0006==local::at0016|Clinical concern of spreading infection or deep-seated soft tissue or bone infection|)||(($gt0006==local::at0017|Gangrene (with or without ulceration)|)||(($gt0006==local::at0013|Ulceration with limb ischemia|)||($gt0006==local::at0012|Ulceration with fever or any signs of sepsis|))))",...>
+				then = <"$gt0011=local::at0053|Further investigation and treatment may be required because of increased risk of cardiovascular disease|", "$gt0010=local::at0045|Immediate notification of multidisciplinary foot care team for assessment and individualized treatment plan|", "$gt0009=local::at0039|Immediate referral to acute services|", "$gt0008=4|local::at0036|Limb-threatening or life-threatening diabetic foot problem|">
+				priority = <1>
+			>
+			["gt0017"] = (RULE) <
+				when = <"($gt0006==local::at0029|0. Callus allone|)||($gt0006==local::at0030|0. No risk factor present|)", "$gt0004.value>=($currentDateTime.value-17,a)", "$gt0004.value<=($currentDateTime.value-12,a)">
+				then = <"$gt0011=local::at0055|Inform about: individual risk of progression, foot care, foot emergencies and who to contact, footwear advice and importance of blood glucose control|", "$gt0010=local::at0050|Reassess foot annually and provide foot care information and advice|", "$gt0009=local::at0043|No referral recommendation|", "$gt0008=0|local::at0032|Low risk|">
+				priority = <6>
+			>
+			["gt0018"] = (RULE) <
+				when = <"($gt0006==local::at0029|0. Callus allone|)||($gt0006==local::at0030|0. No risk factor present|)", "$gt0004.value<($currentDateTime.value-17,a)">
+				then = <"$gt0011=local::at0055|Inform about: individual risk of progression, foot care, foot emergencies and who to contact, footwear advice and importance of blood glucose control|", "$gt0010=local::at0051|Reassess foot at least annually, and if foot problems arise, or if admitted to hospital, or if there is any change in status while in hospital|", "$gt0009=local::at0043|No referral recommendation|", "$gt0008=0|local::at0032|Low risk|">
+				priority = <5>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Diabetes - Diabetic Foot">
+						description = <"The National Institute for Health and Care Excellence (NICE) guideline for prevention and management of diabetic foot problems provides general recommendations for preventing and managing diabetic foot in children, young people and adults. Recommendations are made based on the person's age, whether admitted to hospital or an out-patient, and the determined risk status based on the presence or absence of one or more clincal findings.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Does the patient have diabetes?">
+						description = <"Whether patient has been diagnosed with diabetes">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Date of birth">
+						description = <"The person's date of birth">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Risk factors">
+						description = <"Observable risk factors for diabetic foot problems">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Risk status">
+						description = <"Determined risk of developing a diabetic foot problem">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Referral recommendation">
+						description = <"Recommendations for referral">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Reassessment recommendation">
+						description = <"Recommendations for foot reassessment">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Other recommendation">
+						description = <"Additional recommendations">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Low risk of diabetic foot problem, age <12 years">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Moderate risk of diabetic foot problem">
+					>
+					["gt0014"] = (TERM) <
+						text = <"High risk of diabetic foot problem">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Active diabetic foot problem">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Limb- or life-threatening diabetic foot problem">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Low risk of diabetic foot problem, age 12 - 17 years">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Low risk of diabetic foot problem, age >17 years">
+					>
+					["gt0019"] = (TERM) <
+						text = <"Risk factors">
+						description = <"Observable risk factors for diabetic foot problems">
+					>
+				>
+			>
+		>
+	>
+>
