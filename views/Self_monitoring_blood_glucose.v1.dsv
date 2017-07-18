@@ -131,6 +131,7 @@ function getInformation() {
           <button class="button" onclick="getInformation()">App Description</button>
           <div id="infobox"> 
             <h2>{{def.concept.description}}</h2>
+            <br/>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed egestas magna. Aenean magna dolor, accumsan eget malesuada sodales, ultricies eu mi. Curabitur rutrum quis felis sed dignissim. Donec porttitor, tellus nec eleifend condimentum, orci eros imperdiet erat, et eleifend dolor libero eu magna. Etiam vel enim vel turpis dignissim dictum. Aliquam et lorem molestie lorem vulputate ullamcorper vel eu nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </div>
         </div>
@@ -243,7 +244,7 @@ function getInformation() {
     color:  #264040;
   }
   h2 {
-    text-align: center;
+    text-align: left;
     font-weight: 300;
     font-size: 22px;
   }
@@ -261,6 +262,7 @@ function getInformation() {
   }
   .wrapper1{
     text-align: center;
+
   }
   .wrapper2{
     font-style: italic;
@@ -278,8 +280,7 @@ function getInformation() {
     overflow: hidden;
   }
   .references1 {
-    border: 1.2px SlateGray;
-    border-style: dashed;
+    border: 1.2px dashed SlateGray;
     padding:0.5em;
     width: 70%;
     margin: auto;

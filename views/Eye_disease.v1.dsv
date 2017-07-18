@@ -125,9 +125,10 @@ function getInformation() {
           <button class="button" onclick="getInformation()">App Description</button>
           <div id="infobox">
             <h2>{{def.concept.description}}</h2>
+            <br/>
             <div id="geninfo">
               <b>{{${info_box_def}.name}}:</b>
-                <li ng-repeat="(key, desc) in ${info_box_def}.selections">{{desc}}</li>
+              <li ng-repeat="(key, desc) in ${info_box_def}.selections">{{desc}}</li>
             </div>
           </div>
         </div>
@@ -232,7 +233,7 @@ function getInformation() {
     color:  #264040;
   }
   h2 {
-    text-align: center;
+    text-align: left;
     font-weight: 300;
     font-size: 22px;
   }
@@ -250,7 +251,7 @@ function getInformation() {
   }
   .wrapper1{
     text-align: center;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
   }
   .wrapper2{
     font-style: italic;
@@ -268,8 +269,7 @@ function getInformation() {
     overflow: hidden;
   }
   .references1 {
-    border: 1.2px SlateGray;
-    border-style: dashed;
+    border: 1.2px dashed SlateGray;
     padding:0.5em;
     width: 70%;
     margin: auto;
@@ -287,6 +287,8 @@ function getInformation() {
   }
   #geninfo{
     text-align: left;
+    border: 1.2px dashed SlateGray;
+    padding:0.5em;
   }
   #displayresult {
     background-color: #e6e6e6; 
