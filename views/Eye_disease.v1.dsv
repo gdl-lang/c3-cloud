@@ -24,10 +24,9 @@
     }
   },
   "decisionSupportViewDefinitions": {
-    "sv": {},
     "en": {
       "name": "Eye disease",
-      "description": "NICE Guidelines on eye disease management among patients with diabetes"
+      "description": "To provide guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.\n"
     }
   },
   "resourceDescription": {
@@ -37,33 +36,23 @@
       "organisation": "Cambio Healthcare Systems",
       "email": "models@cambiocds.com"
     },
-    "otherContributors": [],
+    "otherContributors": [
+      "Jimmy Axelsson, Cambio Healthcare Systems"
+    ],
+    "lifecycleState": "Author draft",
     "details": {
-      "sv": {
-        "purpose": "*(en) To provide guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.",
-        "keywords": [
-          "*(en) NICE",
-          "*(en) NICE guidelines",
-          "*(en) diabetes",
-          "*(en) eye disease",
-          "*(en) ophtalmology",
-          "*(en) endocrinology"
-        ],
-        "use": "*(en) Use as guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.",
-        "copyright": "Cambio Healthcare Systems"
-      },
       "en": {
-        "purpose": "To provide guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.",
+        "purpose": "To provide guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.\n",
         "keywords": [
           "NICE",
           "NICE guidelines",
-          "diabetes",
-          "eye disease",
-          "ophtalmology",
-          "endocrinology"
+          "Diabetes",
+          "Eye disease",
+          "Ophtalmology",
+          "Endocrinology"
         ],
         "use": "Use as guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.",
-        "copyright": "Cambio Healthcare Systems"
+        "copyright": "© Cambio Healthcare Systems"
       }
     },
     "otherDetails": {
@@ -76,135 +65,153 @@
   ],
   "alertBindings": {},
   "termDefinitions": {
-    "sv": {
-      "id": "sv",
-      "terms": {
-        "vt0001": {
-          "id": "vt0001",
-          "text": "*(en) References"
-        }
-      }
-    },
     "en": {
       "id": "en",
-      "terms": {
-        "vt0001": {
-          "id": "vt0001",
-          "text": "References"
-        }
-      }
+      "terms": {}
     }
   },
   "resultTemplates": []
 }</script>
 </head>
 <body ng-controller="cds_controller">
-<#assign app_help_tag = "def.guides['Eye_disease.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
-<#assign eye_disease_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.eye_disease.v0']">
-<#assign eye_disease_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.eye_disease.v0']">
-<#assign eye_disease_entry_def = "def.entries['openEHR-EHR-OBSERVATION.eye_disease.v0']">
-<#assign recommendation_def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0022}']">
-<#assign new_vessel_formation__def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
-<#assign exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0015}']">
-<#assign other_pathological_findings__def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0018}']">
+<#assign eye_disease_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.eye_disease.v1']">
+<#assign eye_disease_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.eye_disease.v1']">
+<#assign eye_disease_entry_def = "def.entries['openEHR-EHR-OBSERVATION.eye_disease.v1']">
+<#assign new_vessel_formation__def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
+<#assign other_pathological_findings__def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign recommendation_def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign info_box_def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign event_time_def = eye_disease_entry_def + ".elements['/data/events/time']">
 <#assign sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__def = eye_disease_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign recommendation_cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0022}']">
-<#assign new_vessel_formation__cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
-<#assign exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0015}']">
-<#assign other_pathological_findings__cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0018}']">
+<#assign new_vessel_formation__cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
+<#assign other_pathological_findings__cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign recommendation_cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign info_box_cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign event_time_cds_data = eye_disease_entry_cds_data + "[0].elements['/data/events/time']">
 <#assign sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__cds_data = eye_disease_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign recommendation_ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0022}']">
-<#assign new_vessel_formation__ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
-<#assign exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0015}']">
-<#assign other_pathological_findings__ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0018}']">
+<#assign new_vessel_formation__ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
+<#assign other_pathological_findings__ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign recommendation_ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign info_box_ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign event_time_ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__ehr_data = eye_disease_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 
 <script> 
-angular.module('cds_app').controller('Eye_disease_Ctrl', function($scope, $window){
+angular.module('cds_app').controller('Eye_Disease_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
-    $scope.${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__ehr_data}.value.selection = $scope.findMin($scope.${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__def});
-	$scope.${new_vessel_formation__ehr_data}.value.selection = $scope.findMin($scope.${new_vessel_formation__def});
-	$scope.${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__ehr_data}.value.selection = $scope.findMin($scope.${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__def});
-	$scope.${other_pathological_findings__ehr_data}.value.selection = $scope.findMin($scope.${other_pathological_findings__def});
+    getInformation();
   });
 });
+function getInformation() {
+    var x = document.getElementById('infobox');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
 </script>
 
-<div ng-show="ready" ng-controller="Eye_disease_Ctrl">
-<div ng-show="ready">
-<div class="header">
-  <h1>{{def.concept.name}}</h1>
-  <h2>{{def.concept.description}}</h2>
-  <div class="help-tip">
-	<p>{{${app_help_tag}.description}}</p>
+<div ng-show="ready" ng-controller="Eye_Disease_Ctrl">
+  <div ng-show="ready">
+      <h1>{{def.concept.name}}</h1>
+      <hr style="height:1.5px;border:none;color:SlateGray;background-color:SlateGray;" />
+        <div class="wrapper1">
+          <button class="button" onclick="getInformation()">App Description</button>
+          <div id="infobox">
+            <h2>{{def.concept.description}}</h2>
+            <div id="geninfo">
+              <b>{{${info_box_def}.name}}:</b>
+                <li ng-repeat="(key, desc) in ${info_box_def}.selections">{{desc}}</li>
+            </div>
+          </div>
+        </div>
   </div>
+  <div class="card">
+    <div class="row collapse" title="{{${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__def}.name}}</label>
+      </div>
+      <label class="medium-2 columns" ng-repeat="(key, desc) in ${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+    </div>
+  <div class="row collapse" title="{{${new_vessel_formation__def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${new_vessel_formation__def}.name}}</label>
+      </div>
+      <label class="medium-2 columns" ng-repeat="(key, desc) in ${new_vessel_formation__def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${new_vessel_formation__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+    </div>
+  <div class="row collapse" title="{{${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__def}.name}}</label>
+      </div>
+      <label class="medium-2 columns" ng-repeat="(key, desc) in ${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+    </div>
+  <div class="row collapse" title="{{${other_pathological_findings__def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${other_pathological_findings__def}.name}}</label>
+      </div>
+      <label class="medium-2 columns" ng-repeat="(key, desc) in ${other_pathological_findings__def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${other_pathological_findings__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+    </div>
+  <div class="row collapse" title="{{${recommendation_def}.description}}" id="displayresult">
+    <div class="medium-6 columns">
+      <label><b>{{${recommendation_def}.name}}: </b></label>
+    </div>
+    <div class="medium-6 columns" style="text-align: center;">
+      <label>{{${recommendation_cds_data}.value.value}}</label>
+    </div>
+  </div>
+</div>
 </div>
 
-<div class="card">
-<div class="row collapse" title="{{${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__def}.description}}">
-    <div class="medium-7 columns">
-      <label>{{${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__def}.name}}</label>
-    </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-    </label>
-  </div>
-<div class="row collapse" title="{{${new_vessel_formation__def}.description}}">
-    <div class="medium-7 columns">
-      <label>{{${new_vessel_formation__def}.name}}</label>
-    </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${new_vessel_formation__def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${new_vessel_formation__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-    </label>
-  </div>
-<div class="row collapse" title="{{${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__def}.description}}">
-    <div class="medium-7 columns">
-      <label>{{${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__def}.name}}</label>
-    </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${exudate_or_retinal_thickening_within_one_disc_diameter_or_circinate_or_group_exudates_within_the_macula__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-    </label>
-  </div>
-<div class="row collapse" title="{{${other_pathological_findings__def}.description}}">
-    <div class="medium-7 columns">
-      <label>{{${other_pathological_findings__def}.name}}</label>
-    </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${other_pathological_findings__def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${other_pathological_findings__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-    </label>
-  </div>
-<div class="row collapse" title="{{${recommendation_def}.description}}" id="displayresult1">
-  <div class="medium-6 columns">
-    <label><b>{{${recommendation_def}.name}}: </b></label>
-  </div>
-  <div class="medium-6 columns" style="text-align: center;">
-    <label>{{${recommendation_cds_data}.value.value}}</label>
-  </div>
-</div>
-</div>
-</div>
+<br/><br/>
 
-<div class="row"><div class="medium-12 columns"></div></div>
-<br /><br />
-<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
-  <div class="medium-11 medium-offset-1 column">
-    <label>{{${references}.text}}:</label>
-  </div>
-</div>
 <div class="references1">
   <div class="row collapse">
-      <div class="medium-11 medium-offset-1 column">
-        <li>
-          <i><a href="https://www.nice.org.uk/guidance/ng28">National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).To identify diabetes patients in need of autonomic neuropathy monitoring.</a></i>
-        </li>
-      </div>
+    <div class="medium-12 columns">
+      <h3>{{${references}.text}}</h3>
+        <div id="ref">
+          <li >
+            <i><a href="https://www.nice.org.uk/guidance/ng28">National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).To identify diabetes patients in need of autonomic neuropathy monitoring.</a>
+            </i>
+          </li>
+        </div>
     </div>
   </div>
+</div>
+
+<br/>
+
+<div class="wrapper2">
+  <div class="row collapse">
+    <div class="medium-12 columns">
+      <div id="disc">
+      <b>Disclaimer: </b>
+            The single-page application presented on this page has been created for demonstration purposes only and should NOT be used to make medical decisions in the current state. The app is not intended to replace clinical judgement and all clinical information must be validated by the user prior to use. The user assumes sole responsibility for any decisions made or actions taken based on information generated by the clinical decision support application. Cambio Healthcare Systems and the individual authors of the published clinical models assume no liability of any kind.
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<div class="wrapper1">
+    <img src="https://www.kronikgune.org/wp-content/uploads/2016/05/c3cloud-proyecto-europeo-kronikgune.jpg" id="projectimg"/>
+    <img src="http://www.cambiohealthcare.co.uk/wp-content/uploads/2016/09/Cambio_logo_left.jpg" id="projectimg"/>
+</div>
+
+<br/>
 
 <style>
   html, body {
@@ -215,125 +222,94 @@ angular.module('cds_app').controller('Eye_disease_Ctrl', function($scope, $windo
     font-family: sans-serif;
     font-weight: 300;
     color: #333;
-    background: #ecf0f9;
+    background: #F5F5F5;
     padding: 1em;
     -webkit-font-smoothing: antialiased;
   }
   h1 {
     font-weight: 600;
     text-align: center;
+    color:  #264040;
   }
   h2 {
     text-align: center;
     font-weight: 300;
     font-size: 22px;
+  }
+  h3 {
+    text-align: left;
+    font-size: 14px;
     font-style: italic;
-  }
-  .header {
-    margin-bottom: 2em;
-  }
-  .card {
-    background-color: #fdfdfd;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    margin: 10px auto 0 auto;
-    padding: 1em;
-    width: 50%;
-    overflow: hidden;
-  }
-  .help-tip{
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      text-align: center;
-      background-color: #BCDBEA;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      font-size: 14px;
-      line-height: 26px;
-      cursor: default;
-  }
-  .help-tip:before{
-      content:'?';
-      font-weight: bold;
-      color:#fff;
-  }
-  .help-tip:hover p{
-      display:block;
-      transform-origin: 100% 0%;
-      -webkit-animation: fadeIn 0.3s ease-in-out;
-      animation: fadeIn 0.3s ease-in-out;
-  }
-  .help-tip p{	/* The tooltip */
-      display: none;
-      text-align: left;
-      background-color: #1E2021;
-      padding: 20px;
-      width: 300px;
-      position: absolute;
-      border-radius: 3px;
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-      right: -4px;
-      color: #FFF;
-      font-size: 13px;
-      line-height: 1.4;
-      z-index: 9999;
-  }
-  .help-tip p:before{ /* The pointer of the tooltip */
-      position: absolute;
-      content: '';
-      width:0;
-      height: 0;
-      border:6px solid transparent;
-      border-bottom-color:#1E2021;
-      right:10px;
-      top:-12px;
-  }
-  .help-tip p:after{ /* Prevents the tooltip from being hidden */
-      width:100%;
-      height:40px;
-      content:'';
-      position: absolute;
-      top:-40px;
-      left:0;
-  }
-  .references1{
-    font-size: 70%;
-  }
-  /* CSS animation */
-  @-webkit-keyframes fadeIn {
-      0% { 
-          opacity:0; 
-          transform: scale(0.6);
-      }
-
-      100% {
-          opacity:100%;
-          transform: scale(1);
-      }
-  }
-  @keyframes fadeIn {
-      0% { opacity:0; }
-      100% { opacity:100%; }
-  }
-  #displayresult1 {
-    background-color: #e6e6e6; 
-    padding-top: 3px;
-    padding-bottom: 3px;
-	padding-left: 3px;
-    font-size: 90%;
-  }
-  #displayresult2 {
-    background-color: #f2f2f2;
-    padding-top: 3px;
-    padding-bottom: 3px;
-	padding-left: 3px;
-    font-size: 90%;
+    font-weight: bold;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
+  }
+  .header {
+    margin: 2em;
+  }
+  .wrapper1{
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+  .wrapper2{
+    font-style: italic;
+    max-width: 55%;
+    margin: auto;
+  }
+  .card {
+    background-color: #FFFAFA;
+    border: 1px solid #99a6b2;
+    border-width: thin;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 70%;
+    overflow: hidden;
+  }
+  .references1 {
+    border: 1.2px SlateGray;
+    border-style: dashed;
+    padding:0.5em;
+    width: 70%;
+    margin: auto;
+  }
+  #infobox{
+    margin: auto;
+    border: 1px solid LightSlateGrey;
+    border-width: thin;
+    background-color: #FFFAFA;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 55%;
+    overflow: hidden;
+  }
+  #geninfo{
+    text-align: left;
+  }
+  #displayresult {
+    background-color: #e6e6e6; 
+    padding: 3px;
+    font-size: 90%;
+  }
+  #ref {
+    font-size:90%; 
+    padding-left:2em;
+  }
+  #disc {
+    font-size: 55%;
+  }
+  #projectimg{
+    border: 5px solid SlateGray;
+    border-width: thin;
+    height: auto; 
+    width: auto; 
+    max-height: 50px;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+  }
 </style>
-
-
 </div>
-</body></html>
+</body>
+</html>
