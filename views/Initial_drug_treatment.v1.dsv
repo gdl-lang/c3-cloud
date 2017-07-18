@@ -1,4 +1,18 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "Initial_drug_treatment.v1",
   "language": {
     "originalLanguage": {
@@ -86,4 +100,291 @@
     }
   },
   "resultTemplates": []
-}</script></head><body></body></html>
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['Initial_drug_treatment.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
+<#assign initial_drug_treatment_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.initial_drug_treatment.v0']">
+<#assign initial_drug_treatment_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.initial_drug_treatment.v0']">
+<#assign initial_drug_treatment_entry_def = "def.entries['openEHR-EHR-OBSERVATION.initial_drug_treatment.v0']">
+<#assign history_of_diabetic_ketoacidosis__cardiac_failure_or_hepatic_impairment__def = initial_drug_treatment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign treatment_recommendation_def = initial_drug_treatment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0031}']">
+<#assign egfr__30_ml_min_1_73_m_2__def = initial_drug_treatment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}']">
+<#assign symptomatic_hyperglycemia_def = initial_drug_treatment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign history_of_bladder_cancer_or_uninvestigated_macroscopic_hematuria__def = initial_drug_treatment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0015}']">
+<#assign metformin_contraindicated_def = initial_drug_treatment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign egfr__45_ml_min_1_73_m_2__def = initial_drug_treatment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
+<#assign metformin_tolerated_def = initial_drug_treatment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign management_def = initial_drug_treatment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0036}']">
+<#assign event_time_def = initial_drug_treatment_entry_def + ".elements['/data/events/time']">
+<#assign history_of_diabetic_ketoacidosis__cardiac_failure_or_hepatic_impairment__cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign treatment_recommendation_cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0031}']">
+<#assign egfr__30_ml_min_1_73_m_2__cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}']">
+<#assign symptomatic_hyperglycemia_cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign history_of_bladder_cancer_or_uninvestigated_macroscopic_hematuria__cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0015}']">
+<#assign metformin_contraindicated_cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign egfr__45_ml_min_1_73_m_2__cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
+<#assign metformin_tolerated_cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign management_cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0036}']">
+<#assign event_time_cds_data = initial_drug_treatment_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign history_of_diabetic_ketoacidosis__cardiac_failure_or_hepatic_impairment__ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign treatment_recommendation_ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0031}']">
+<#assign egfr__30_ml_min_1_73_m_2__ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}']">
+<#assign symptomatic_hyperglycemia_ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign history_of_bladder_cancer_or_uninvestigated_macroscopic_hematuria__ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0015}']">
+<#assign metformin_contraindicated_ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign egfr__45_ml_min_1_73_m_2__ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
+<#assign metformin_tolerated_ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign management_ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0036}']">
+<#assign event_time_ehr_data = initial_drug_treatment_entry_ehr_data + "[0].elements['/data/events/time']">
+
+<script> 
+angular.module('cds_app').controller('initial_drug_treatment_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${symptomatic_hyperglycemia_ehr_data}.value.selection = $scope.findMin($scope.${symptomatic_hyperglycemia_def});
+	$scope.${metformin_contraindicated_ehr_data}.value.selection = $scope.findMin($scope.${metformin_contraindicated_def});
+	$scope.${metformin_tolerated_ehr_data}.value.selection = $scope.findMin($scope.${metformin_tolerated_def});
+	$scope.${history_of_diabetic_ketoacidosis__cardiac_failure_or_hepatic_impairment__ehr_data}.value.selection = $scope.findMin($scope.${history_of_diabetic_ketoacidosis__cardiac_failure_or_hepatic_impairment__def});
+	$scope.${history_of_bladder_cancer_or_uninvestigated_macroscopic_hematuria__ehr_data}.value.selection = $scope.findMin($scope.${history_of_bladder_cancer_or_uninvestigated_macroscopic_hematuria__def});
+	$scope.${egfr__45_ml_min_1_73_m_2__ehr_data}.value.selection = $scope.findMin($scope.${egfr__45_ml_min_1_73_m_2__def});
+	$scope.${egfr__30_ml_min_1_73_m_2__ehr_data}.value.selection = $scope.findMin($scope.${egfr__30_ml_min_1_73_m_2__def});
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="initial_drug_treatment_Ctrl">
+<div ng-show="ready">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+
+<div class="card">
+<div class="row collapse" title="{{${symptomatic_hyperglycemia_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${symptomatic_hyperglycemia_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${symptomatic_hyperglycemia_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${symptomatic_hyperglycemia_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${metformin_contraindicated_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${metformin_contraindicated_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${metformin_contraindicated_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${metformin_contraindicated_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${metformin_tolerated_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${metformin_tolerated_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${metformin_tolerated_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${metformin_tolerated_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${history_of_diabetic_ketoacidosis__cardiac_failure_or_hepatic_impairment__def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${history_of_diabetic_ketoacidosis__cardiac_failure_or_hepatic_impairment__def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${history_of_diabetic_ketoacidosis__cardiac_failure_or_hepatic_impairment__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${history_of_diabetic_ketoacidosis__cardiac_failure_or_hepatic_impairment__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${history_of_bladder_cancer_or_uninvestigated_macroscopic_hematuria__def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${history_of_bladder_cancer_or_uninvestigated_macroscopic_hematuria__def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${history_of_bladder_cancer_or_uninvestigated_macroscopic_hematuria__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${history_of_bladder_cancer_or_uninvestigated_macroscopic_hematuria__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${egfr__45_ml_min_1_73_m_2__def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${egfr__45_ml_min_1_73_m_2__def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${egfr__45_ml_min_1_73_m_2__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${egfr__45_ml_min_1_73_m_2__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${egfr__30_ml_min_1_73_m_2__def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${egfr__30_ml_min_1_73_m_2__def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${egfr__30_ml_min_1_73_m_2__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${egfr__30_ml_min_1_73_m_2__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${treatment_recommendation_def}.description}}" id="displayresult1">
+  <div class="medium-6 columns">
+    <label><b>{{${treatment_recommendation_def}.name}}: </b></label>
+  </div>
+  <div class="medium-6 columns" style="text-align: center;">
+    <label>{{${treatment_recommendation_cds_data}.value.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${management_def}.description}}" id="displayresult2">
+  <div class="medium-6 columns">
+    <label><b>{{${management_def}.name}}: </b></label>
+  </div>
+  <div class="medium-6 columns" style="text-align: center;">
+    <label>{{${management_cds_data}.value.value}}</label>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.nice.org.uk/guidance/ng28">National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).To identify diabetes patients in need of autonomic neuropathy monitoring.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+    font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #displayresult1 {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+</style>
+
+
+</div>
+</body></html>
