@@ -1,0 +1,237 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.eye_disease.v0
+
+concept
+	[at0000]	-- Eye disease
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-18">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To provide guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.
+">
+			use = <"Use as guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.">
+			keywords = <"NICE", "NICE guidelines", "diabetes", "eye disease", "ophtalmology", "endocrinology">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).">
+		["MD5-CAM-1.0.1"] = <"A940F3ED4F16C31867595DB5253139C7">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Eye disease
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Info-box
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Explain the reason for screening to the patient.
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- On diagnosis, immediately refer for eye screening; first screening should be performed no later than three months after referral. Arrange for repeated annual screening.
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Use mydriasis with tropicamid when photographing.
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Use trained staff and quality assured technology.
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Perform visual testing as part of the screening programme.
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Sudden loss of vision or rubeosis iridis or pre-retinal or vitreous hemorrhage or retinal detachment?
+										value matches {
+											0|[local::at0011], 	-- No
+											1|[local::at0013]  	-- Yes
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- New vessel formation?
+										value matches {
+											0|[local::at0014], 	-- No
+											1|[local::at0016]  	-- Yes
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Exudate or retinal thickening within one disc diameter or circinate or group exudates within the macula?
+										value matches {
+											0|[local::at0017], 	-- No
+											1|[local::at0019]  	-- Yes
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Other pathological findings?
+										value matches {
+											0|[local::at0020], 	-- No
+											1|[local::at0021]  	-- Yes
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Recommendation
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0023, 	-- Routine review in one year
+													at0024, 	-- Emergency review by an ophtalmologist
+													at0025, 	-- Rapid review by an opthalmologist
+													at0026, 	-- Refer to an ophtalmologist
+													at0027]	-- Refer to an ophtalmologist and perform earlier review
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Eye disease">
+					description = <"To provide guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.
+">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Info-box">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Explain the reason for screening to the patient.">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"On diagnosis, immediately refer for eye screening; first screening should be performed no later than three months after referral. Arrange for repeated annual screening.">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Use mydriasis with tropicamid when photographing.">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Use trained staff and quality assured technology.">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Perform visual testing as part of the screening programme.">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Sudden loss of vision or rubeosis iridis or pre-retinal or vitreous hemorrhage or retinal detachment?">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"New vessel formation?">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Exudate or retinal thickening within one disc diameter or circinate or group exudates within the macula?">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Other pathological findings?">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Recommendation">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Routine review in one year">
+					description = <"No pathological findings">
+				>
+				["at0024"] = <
+					text = <"Emergency review by an ophtalmologist">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Rapid review by an opthalmologist">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Refer to an ophtalmologist">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Refer to an ophtalmologist and perform earlier review">
+					description = <"*">
+				>
+			>
+		>
+	>

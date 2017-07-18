@@ -1,0 +1,135 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Eye_disease.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"NICE", "NICE guidelines", "diabetes", "eye disease", "ophtalmology", "endocrinology">
+				purpose = <"To provide guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.
+">
+				use = <"Use as guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.">
+			>
+		>
+		original_author = <
+			["date"] = <"2017-07-18">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Dennis Forslund">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.eye_disease.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0022]">
+					>
+				>
+			>
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.eye_disease.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0010]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0012]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0015]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0018]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+		>
+		rules = <
+			["gt0009"] = (RULE) <
+				when = <"$gt0005==1|local::at0013|Yes|",...>
+				then = <"$gt0004=local::at0024|Emergency review by an ophtalmologist|",...>
+				priority = <5>
+			>
+			["gt0010"] = (RULE) <
+				when = <"$gt0006==1|local::at0016|Yes|", "!fired($gt0009)">
+				then = <"$gt0004=local::at0025|Rapid review by an opthalmologist|",...>
+				priority = <4>
+			>
+			["gt0011"] = (RULE) <
+				when = <"$gt0007==1|local::at0019|Yes|", "!fired($gt0009)", "!fired($gt0010)">
+				then = <"$gt0004=local::at0026|Refer to an ophtalmologist|",...>
+				priority = <3>
+			>
+			["gt0012"] = (RULE) <
+				when = <"$gt0008==1|local::at0021|Yes|", "!fired($gt0009)", "!fired($gt0010)", "!fired($gt0011)">
+				then = <"$gt0004=local::at0027|Refer to an ophtalmologist and perform earlier review|",...>
+				priority = <2>
+			>
+			["gt0013"] = (RULE) <
+				when = <"$gt0005==0|local::at0011|No|", "$gt0006==0|local::at0014|No|", "$gt0007==0|local::at0017|No|", "$gt0008==0|local::at0020|No|">
+				then = <"$gt0004=local::at0023|Routine review in one year|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Eye disease">
+						description = <"To provide guidance on eye disease management among patients with diabetes, in accordance with the NICE Guidelines.
+">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Recommendation">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Sudden loss of vision or rubeosis iridis or pre-retinal or vitreous hemorrhage or retinal detachment?">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"New vessel formation?">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Exudate or retinal thickening within one disc diameter or circinate or group exudates within the macula?">
+						description = <"*">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Other pathological findings?">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+						text = <"CDS sudden loss of vision">
+					>
+					["gt0010"] = (TERM) <
+						text = <"CDS new vessel formation">
+					>
+					["gt0011"] = (TERM) <
+						text = <"CDS exudate or retinal thickeing">
+					>
+					["gt0012"] = (TERM) <
+						text = <"CDS other findings">
+					>
+					["gt0013"] = (TERM) <
+						text = <"CDS no pathological findings">
+					>
+				>
+			>
+		>
+	>
+>
