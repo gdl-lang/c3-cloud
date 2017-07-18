@@ -35,7 +35,9 @@
       "organisation": "Cambio Healthcare Systems",
       "email": "models@cambiocds.com"
     },
-    "otherContributors": [],
+    "otherContributors": [
+	"Dennis Forslund, Cambio Healthcare Systems"
+	],
     "lifecycleState": "Author draft",
     "details": {
       "en": {

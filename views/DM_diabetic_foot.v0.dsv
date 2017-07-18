@@ -1,13 +1,14 @@
-<!DOCTYPE html><html ng-app="cds_app"><head>
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
-<link rel="stylesheet" type="text/css" href="wro/angular.css" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -35,7 +36,9 @@
       "organisation": "Cambio Healthcare Systems",
       "email": "models@cambiocds.com"
     },
-    "otherContributors": [],
+    "otherContributors": [
+	"Dennis Forslund, Cambio Healthcare Systems"
+	],
     "lifecycleState": "Author draft",
     "details": {
       "en": {
@@ -71,47 +74,48 @@
 }</script>
 </head>
 <body ng-controller="cds_controller">
-<#assign app_help_tag = "def.guides['Lipid_lowering_CKD.v1'].concept">
+<#assign app_help_tag = "def.guides['DM_diabetic_foot.v0'].concept">
 <#assign references = "def.terms['vt0001']"/>
-<#assign type_2_diabetes__erectile_dysfunction_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.diabetes_erectile_dysfunction.v0']">
-<#assign type_2_diabetes__erectile_dysfunction_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.diabetes_erectile_dysfunction.v0']">
-<#assign type_2_diabetes__erectile_dysfunction_entry_def = "def.entries['openEHR-EHR-OBSERVATION.diabetes_erectile_dysfunction.v0']">
-<#assign is_phosphodiesterase_5_inhibitor__pde5i__treatment_contraindicated__def = type_2_diabetes__erectile_dysfunction_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
-<#assign has_phosphodiesterase_5_inhibitor__pde5i__treatment_been_successful__def = type_2_diabetes__erectile_dysfunction_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
-<#assign recommendation_def = type_2_diabetes__erectile_dysfunction_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
-<#assign sex_def = type_2_diabetes__erectile_dysfunction_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign does_the_patient_have_type_2_diabetes__dm2___def = type_2_diabetes__erectile_dysfunction_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign event_time_def = type_2_diabetes__erectile_dysfunction_entry_def + ".elements['/data/events/time']">
-<#assign does_the_patient_have_erectile_dysfunction__ed___def = type_2_diabetes__erectile_dysfunction_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign is_phosphodiesterase_5_inhibitor__pde5i__treatment_contraindicated__cds_data = type_2_diabetes__erectile_dysfunction_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
-<#assign has_phosphodiesterase_5_inhibitor__pde5i__treatment_been_successful__cds_data = type_2_diabetes__erectile_dysfunction_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
-<#assign recommendation_cds_data = type_2_diabetes__erectile_dysfunction_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
-<#assign sex_cds_data = type_2_diabetes__erectile_dysfunction_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign does_the_patient_have_type_2_diabetes__dm2___cds_data = type_2_diabetes__erectile_dysfunction_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign event_time_cds_data = type_2_diabetes__erectile_dysfunction_entry_cds_data + "[0].elements['/data/events/time']">
-<#assign does_the_patient_have_erectile_dysfunction__ed___cds_data = type_2_diabetes__erectile_dysfunction_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign is_phosphodiesterase_5_inhibitor__pde5i__treatment_contraindicated__ehr_data = type_2_diabetes__erectile_dysfunction_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
-<#assign has_phosphodiesterase_5_inhibitor__pde5i__treatment_been_successful__ehr_data = type_2_diabetes__erectile_dysfunction_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
-<#assign recommendation_ehr_data = type_2_diabetes__erectile_dysfunction_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
-<#assign sex_ehr_data = type_2_diabetes__erectile_dysfunction_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign does_the_patient_have_type_2_diabetes__dm2___ehr_data = type_2_diabetes__erectile_dysfunction_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign event_time_ehr_data = type_2_diabetes__erectile_dysfunction_entry_ehr_data + "[0].elements['/data/events/time']">
-<#assign does_the_patient_have_erectile_dysfunction__ed___ehr_data = type_2_diabetes__erectile_dysfunction_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign diabetes___diabetic_foot_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.diabetes_diabetic_foot.v0']">
+<#assign diabetes___diabetic_foot_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.diabetes_diabetic_foot.v0']">
+<#assign diabetes___diabetic_foot_entry_def = "def.entries['openEHR-EHR-OBSERVATION.diabetes_diabetic_foot.v0']">
+<#assign risk_factors_def = diabetes___diabetic_foot_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign risk_status_def = diabetes___diabetic_foot_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0031}']">
+<#assign referral_recommendation_def = diabetes___diabetic_foot_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0037}/items{at0038}']">
+<#assign does_the_patient_have_diabetes__def = diabetes___diabetic_foot_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign date_of_birth_def = diabetes___diabetic_foot_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign reassessment_recommendation_def = diabetes___diabetic_foot_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0037}/items{at0044}']">
+<#assign other_recommendation_def = diabetes___diabetic_foot_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0037}/items{at0052}']">
+<#assign event_time_def = diabetes___diabetic_foot_entry_def + ".elements['/data/events/time']">
+<#assign risk_factors_cds_data = diabetes___diabetic_foot_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign risk_status_cds_data = diabetes___diabetic_foot_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0031}']">
+<#assign referral_recommendation_cds_data = diabetes___diabetic_foot_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0037}/items{at0038}']">
+<#assign does_the_patient_have_diabetes__cds_data = diabetes___diabetic_foot_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign date_of_birth_cds_data = diabetes___diabetic_foot_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign reassessment_recommendation_cds_data = diabetes___diabetic_foot_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0037}/items{at0044}']">
+<#assign other_recommendation_cds_data = diabetes___diabetic_foot_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0037}/items{at0052}']">
+<#assign event_time_cds_data = diabetes___diabetic_foot_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign risk_factors_ehr_data = diabetes___diabetic_foot_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign risk_status_ehr_data = diabetes___diabetic_foot_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0031}']">
+<#assign referral_recommendation_ehr_data = diabetes___diabetic_foot_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0037}/items{at0038}']">
+<#assign does_the_patient_have_diabetes__ehr_data = diabetes___diabetic_foot_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign date_of_birth_ehr_data = diabetes___diabetic_foot_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign reassessment_recommendation_ehr_data = diabetes___diabetic_foot_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0037}/items{at0044}']">
+<#assign other_recommendation_ehr_data = diabetes___diabetic_foot_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0037}/items{at0052}']">
+<#assign event_time_ehr_data = diabetes___diabetic_foot_entry_ehr_data + "[0].elements['/data/events/time']">
 
 <script> 
-angular.module('cds_app').controller('Erectile_dysfunction_Ctrl', function($scope, $window){
+angular.module('cds_app').controller('DM_diabetic_foot_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
-    $scope.${sex_ehr_data}.value.selection = $scope.findMin($scope.${sex_def});
-	$scope.${does_the_patient_have_type_2_diabetes__dm2___ehr_data}.value.selection = $scope.findMin($scope.${does_the_patient_have_type_2_diabetes__dm2___def});
-	$scope.${does_the_patient_have_erectile_dysfunction__ed___ehr_data}.value.selection = $scope.findMin($scope.${does_the_patient_have_erectile_dysfunction__ed___def});
-	$scope.${is_phosphodiesterase_5_inhibitor__pde5i__treatment_contraindicated__ehr_data}.value.selection = $scope.findMin($scope.${is_phosphodiesterase_5_inhibitor__pde5i__treatment_contraindicated__def});
-	$scope.${has_phosphodiesterase_5_inhibitor__pde5i__treatment_been_successful__ehr_data}.value.selection = $scope.findMin($scope.${has_phosphodiesterase_5_inhibitor__pde5i__treatment_been_successful__def});
+    $scope.${date_of_birth_ehr_data}.value.selection = $scope.findMin($scope.${date_of_birth_def});
+	$scope.${does_the_patient_have_diabetes__ehr_data}.value.selection = $scope.findMin($scope.${does_the_patient_have_diabetes__def});
+	$scope.${risk_factors_ehr_data}.value.selection = $scope.findMin($scope.${risk_factors_def});
   });
 });
 </script>
 
-<div ng-show="ready" ng-controller="Erectile_dysfunction_Ctrl">
+<div ng-show="ready" ng-controller="DM_diabetic_foot_Ctrl">
 <div ng-show="ready">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
@@ -122,52 +126,61 @@ angular.module('cds_app').controller('Erectile_dysfunction_Ctrl', function($scop
 </div>
 
 <div class="card">
-<div class="row collapse" title="{{${sex_def}.description}}">
-    <div class="medium-7 columns">
-      <label>{{${sex_def}.name}}</label>
+<div class="row collapse" title="{{${date_of_birth_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${date_of_birth_def}.name}}</label>
     </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${sex_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${sex_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <div class="medium-6 columns">
+      <input ng-model="${date_of_birth_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+    </div>
+  </div>
+<div class="row collapse" title="{{${does_the_patient_have_diabetes__def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${does_the_patient_have_diabetes__def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${does_the_patient_have_diabetes__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${does_the_patient_have_diabetes__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${does_the_patient_have_type_2_diabetes__dm2___def}.description}}">
-    <div class="medium-7 columns">
-      <label>{{${does_the_patient_have_type_2_diabetes__dm2___def}.name}}</label>
+<div class="row collapse" title="{{${risk_factors_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${risk_factors_def}.name}}</label>
+      </div>
+      <label class="medium-6 columns">
+        <select ng-model="${risk_factors_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${risk_factors_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
     </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${does_the_patient_have_type_2_diabetes__dm2___def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${does_the_patient_have_type_2_diabetes__dm2___ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-    </label>
-  </div>
-<div class="row collapse" title="{{${does_the_patient_have_erectile_dysfunction__ed___def}.description}}">
-    <div class="medium-7 columns">
-      <label>{{${does_the_patient_have_erectile_dysfunction__ed___def}.name}}</label>
-    </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${does_the_patient_have_erectile_dysfunction__ed___def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${does_the_patient_have_erectile_dysfunction__ed___ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-    </label>
-  </div>
-<div class="row collapse" title="{{${is_phosphodiesterase_5_inhibitor__pde5i__treatment_contraindicated__def}.description}}">
-    <div class="medium-7 columns">
-      <label>{{${is_phosphodiesterase_5_inhibitor__pde5i__treatment_contraindicated__def}.name}}</label>
-    </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${is_phosphodiesterase_5_inhibitor__pde5i__treatment_contraindicated__def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${is_phosphodiesterase_5_inhibitor__pde5i__treatment_contraindicated__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-    </label>
-  </div>
-<div class="row collapse" title="{{${has_phosphodiesterase_5_inhibitor__pde5i__treatment_been_successful__def}.description}}">
-    <div class="medium-7 columns">
-      <label>{{${has_phosphodiesterase_5_inhibitor__pde5i__treatment_been_successful__def}.name}}</label>
-    </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${has_phosphodiesterase_5_inhibitor__pde5i__treatment_been_successful__def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${has_phosphodiesterase_5_inhibitor__pde5i__treatment_been_successful__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-    </label>
-  </div>
-<div class="row collapse" title="{{${recommendation_def}.description}}" id="displayresult1">
+<div class="row collapse" title="{{${risk_status_def}.description}}" id="displayresult1">
   <div class="medium-6 columns">
-    <label><b>{{${recommendation_def}.name}}: </b></label>
+    <label><b>{{${risk_status_def}.name}}: </b></label>
   </div>
   <div class="medium-6 columns" style="text-align: center;">
-    <label>{{${recommendation_cds_data}.value.value}}</label>
+    <label>{{${risk_status_cds_data}.value.symbol.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${referral_recommendation_def}.description}}" id="displayresult2">
+  <div class="medium-6 columns">
+    <label><b>{{${referral_recommendation_def}.name}}: </b></label>
+  </div>
+  <div class="medium-6 columns" style="text-align: center;">
+    <label>{{${referral_recommendation_cds_data}.value.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${reassessment_recommendation_def}.description}}" id="displayresult1">
+  <div class="medium-6 columns">
+    <label><b>{{${reassessment_recommendation_def}.name}}: </b></label>
+  </div>
+  <div class="medium-6 columns" style="text-align: center;">
+    <label>{{${reassessment_recommendation_cds_data}.value.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${other_recommendation_def}.description}}" id="displayresult2">
+  <div class="medium-6 columns">
+    <label><b>{{${other_recommendation_def}.name}}: </b></label>
+  </div>
+  <div class="medium-6 columns" style="text-align: center;">
+    <label>{{${other_recommendation_cds_data}.value.value}}</label>
   </div>
 </div>
 </div>
@@ -317,8 +330,5 @@ angular.module('cds_app').controller('Erectile_dysfunction_Ctrl', function($scop
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
-
-</div>
 
 </body></html>
