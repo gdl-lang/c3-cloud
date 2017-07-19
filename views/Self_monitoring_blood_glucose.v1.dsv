@@ -77,6 +77,7 @@
 </head>
 <body ng-controller="cds_controller">
 <#assign references = "def.terms['vt0001']"/>
+<#assign app_info = "def.guides['Self_monitoring_blood_glucose.v1'].concept">
 <#assign self_monitoring_of_blood_glucose_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.self_monitoring_of_blood_glucose.v1']">
 <#assign self_monitoring_of_blood_glucose_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.self_monitoring_of_blood_glucose.v1']">
 <#assign self_monitoring_of_blood_glucose_entry_def = "def.entries['openEHR-EHR-OBSERVATION.self_monitoring_of_blood_glucose.v1']">
@@ -108,11 +109,26 @@
 <script> 
 angular.module('cds_app').controller('self_monitoring_of_blood_glucose_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
-    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString(); 
     $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
     getInformation();
+    $scope.hidePregnancy=true; <!-- Hide question from start -->
+  });
+
+  $scope.$on('executeEnd', function() {
+    $scope.hidePregnancy=true;
+    if ($scope.${gender_ehr_data}.value.selection.indexOf('at0006') !== -1) { <!-- check if gender is female -->
+      $scope.hidePregnancy=false;
+    }
+    if ($scope.${gender_ehr_data}.value.selection.indexOf('at0005') !== -1 && $scope.${confirmed_pregnant_or_plans_to_become_pregnant__ehr_data}.value.selection !== null){
+      $scope.${confirmed_pregnant_or_plans_to_become_pregnant__ehr_data}.value.selection=null; <!-- Remove pregnancy selection when user changes back to female -->
+      $scope.execute(); <!-- refresh with removed selection -->
+    }
   });
 });
+
+<!-- Toggle hide/show of infobox -->
+
 function getInformation() {
     var x = document.getElementById('infobox');
     if (x.style.display === 'none') {
@@ -120,6 +136,7 @@ function getInformation() {
     } else {
         x.style.display = 'none';
     }
+
 }
 </script>
 
@@ -133,7 +150,7 @@ function getInformation() {
             <h2>{{def.concept.description}}</h2>
             <br/>
             <div id="geninfo">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed egestas magna. Aenean magna dolor, accumsan eget malesuada sodales, ultricies eu mi. Curabitur rutrum quis felis sed dignissim. Donec porttitor, tellus nec eleifend condimentum, orci eros imperdiet erat, et eleifend dolor libero eu magna. Etiam vel enim vel turpis dignissim dictum. Aliquam et lorem molestie lorem vulputate ullamcorper vel eu nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              {{${app_info}.description}}
             </div>
           </div>
         </div>
@@ -146,6 +163,15 @@ function getInformation() {
       <label class="medium-2 columns" ng-repeat="(key, desc) in ${gender_def}.selections">
         <input type="radio" value="{{key}}" ng-model="${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
       </label>
+    </div>    
+    <div ng-hide="hidePregnancy">
+      <div class="row collapse" title="{{${confirmed_pregnant_or_plans_to_become_pregnant__def}.description}}">
+        <div class="medium-8 columns">
+          <label>{{${confirmed_pregnant_or_plans_to_become_pregnant__def}.name}}</label>
+        </div>
+        <label class="medium-2 columns" ng-repeat="(key, desc) in ${confirmed_pregnant_or_plans_to_become_pregnant__def}.selections">
+          <input type="radio" value="{{key}}" ng-model="${confirmed_pregnant_or_plans_to_become_pregnant__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}</label>
+      </div>
     </div>
   <div class="row collapse" title="{{${treatment_with_risk_of_hypoglycemia__def}.description}}">
       <div class="medium-8 columns">
@@ -153,14 +179,6 @@ function getInformation() {
       </div>
       <label class="medium-2 columns" ng-repeat="(key, desc) in ${treatment_with_risk_of_hypoglycemia__def}.selections">
         <input type="radio" value="{{key}}" ng-model="${treatment_with_risk_of_hypoglycemia__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-      </label>
-    </div>
-  <div class="row collapse" title="{{${confirmed_pregnant_or_plans_to_become_pregnant__def}.description}}">
-      <div class="medium-8 columns">
-        <label>{{${confirmed_pregnant_or_plans_to_become_pregnant__def}.name}}</label>
-      </div>
-      <label class="medium-2 columns" ng-repeat="(key, desc) in ${confirmed_pregnant_or_plans_to_become_pregnant__def}.selections">
-        <input type="radio" value="{{key}}" ng-model="${confirmed_pregnant_or_plans_to_become_pregnant__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
       </label>
     </div>
   <div class="row collapse" title="{{${acute_intercurrent_illness__def}.description}}">
@@ -171,23 +189,27 @@ function getInformation() {
         <input type="radio" value="{{key}}" ng-model="${acute_intercurrent_illness__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
       </label>
     </div>
-  <div class="row collapse" title="{{${recommendation_def}.description}}" id="displayresult1">
-    <div class="medium-6 columns">
-      <label><b>{{${recommendation_def}.name}}: </b></label>
+    <div class="displayresult1" title="{{${recommendation_def}.description}}">
+      <div class="row collapse">
+        <div class="medium-6 columns">
+          <label><b>{{${recommendation_def}.name}}: </b></label>
+        </div>
+        <div class="medium-6 columns" style="text-align: center;">
+          <label>{{${recommendation_cds_data}.value.value}}</label>
+        </div>
+      </div>
     </div>
-    <div class="medium-6 columns" style="text-align: center;">
-      <label>{{${recommendation_cds_data}.value.value}}</label>
+    <div class="displayresult2" title="{{${caution_def}.description}}">
+      <div class="row collapse" >
+        <div class="medium-6 columns">
+          <label><b>{{${caution_def}.name}}: </b></label>
+        </div>
+        <div class="medium-6 columns" style="text-align: center;">
+          <label>{{${caution_cds_data}.value.value}}</label>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row collapse" title="{{${caution_def}.description}}" id="displayresult2">
-    <div class="medium-6 columns">
-      <label><b>{{${caution_def}.name}}: </b></label>
-    </div>
-    <div class="medium-6 columns" style="text-align: center;">
-      <label>{{${caution_cds_data}.value.value}}</label>
-    </div>
-  </div>
-</div>
 </div>
 
 <br/><br/>
@@ -248,7 +270,7 @@ function getInformation() {
   h2 {
     text-align: left;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 20px;
   }
   h3 {
     text-align: left;
@@ -287,12 +309,12 @@ function getInformation() {
     width: 70%;
     margin: auto;
   }
-  #displayresult1 {
+  .displayresult1 {
     background-color: #e6e6e6; 
     padding: 3px;
     font-size: 90%;
   }
-  #displayresult2 {
+  .displayresult2 {
     background-color: #f2f2f2;
     padding: 3px;
     font-size: 90%;

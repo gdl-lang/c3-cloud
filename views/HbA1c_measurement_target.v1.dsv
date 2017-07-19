@@ -70,7 +70,7 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "Hb1Ac_measurement_target.v1"
+    "HbA1c_measurement_target.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {

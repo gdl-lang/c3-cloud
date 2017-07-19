@@ -81,7 +81,7 @@ Self-monitoring is not recommended if the patient is 1) not prescribed treatment
 			>
 			["gt0013"] = (RULE) <
 				when = <"($gt0005==1|local::at0015|Yes|)||($gt0006==1|local::at0017|Yes|)", "$gt0007==1|local::at0019|Yes|">
-				then = <"$gt0008=local::at0011|If the patient is self-monitoring blood glucose, carry out structured assessment annually of the patients' skills in testing and interpreting results, as well as the benefit for the patient|", "$gt0009=local::at0013|Be aware of risk of worsening hypoglycemia|">
+				then = <"$gt0008=local::at0011|If the patient is self-monitoring blood glucose, carry out structured assessment annually of the patients' skills in testing and interpreting results, as well as the benefit for the patient|", "$gt0009=local::at0013|Be aware of risk of worsening hypoglycemia due to acute intercurrent illness|">
 				priority = <1>
 			>
 		>
@@ -92,7 +92,7 @@ Self-monitoring is not recommended if the patient is 1) not prescribed treatment
 				terms = <
 					["gt0001"] = (TERM) <
 						text = <"Self-monitoring of blood glucose">
-						description = <"To provide guidance on self-monitoring among patients with type 2 diabetes, in accordance with the NICE Guidelines.
+						description = <"The aim of this guideline is to provide guidance on self-monitoring of blood glucose among patients with type 2 diabetes, in accordance with the NICE Guidelines.
 ">
 					>
 					["gt0005"] = (TERM) <

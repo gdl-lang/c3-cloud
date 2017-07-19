@@ -146,10 +146,10 @@
 angular.module('cds_app').controller('Lipid_modification_therapy_follow_up_and_monitoring_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
-    $scope.stopStatins = false;
   });
   $scope.$on('executeEnd', function() {
-    if ($scope.${management_liver_cds_data}.value.value == "STOP statin") {
+    $scope.stopStatins = false;
+    if ($scope.${is_liver_transaminase_level___3_times_upper_limit__ehr_data}.value.selection[0].charAt(0) == 1) {
       $scope.stopStatins = true;
     }
   });
@@ -193,7 +193,7 @@ angular.module('cds_app').controller('Lipid_modification_therapy_follow_up_and_m
   </div>
 <div class="row collapse" title="{{${high_intensity_treatment__def}.description}}">
     <div class="medium-7 columns">
-      <label>{{${high_intensity_treatment__def}.name}} + "tjenare"</label>
+      <label>{{${high_intensity_treatment__def}.name}}</label>
     </div>
     <label class="medium-2 columns" ng-repeat="(key, desc) in ${high_intensity_treatment__def}.selections">
       <input type="radio" value="{{key}}" ng-model="${high_intensity_treatment__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
@@ -215,16 +215,17 @@ angular.module('cds_app').controller('Lipid_modification_therapy_follow_up_and_m
     <label>{{${measurement_liver_cds_data}.value.value}}</label>
   </div>
 </div>
-<div class="row collapse" title="{{${management_liver_def}.description}}" id="displayresult2">
-  <div class="medium-6 columns">
-    <div class ="testing123" ng-class="{'stopstatins': stopStatins}">
-    <label><b>{{${management_liver_def}.name}}: </b></label>
-  
-  <div class="medium-6 columns" style="text-align: center;">
-    <label>{{${management_liver_cds_data}.value.value}}</label>
+<div class ="potentialalert" ng-class="{'stopstatins': stopStatins}">
+  <div class="row collapse" title="{{${management_liver_def}.description}}">
+    <div class="medium-6 columns">
+      <label><b>{{${management_liver_def}.name}}: </b></label>
+    </div>
+    <div class="medium-6 columns" style="text-align: center;">
+      <div>
+        <label>{{${management_liver_cds_data}.value.value}}</label>
+      </div>
     </div>
   </div>
-</div>
 </div>
 <div class="row collapse" title="{{${management_muscle_pain_def}.description}}" id="displayresult1">
   <div class="medium-6 columns">
@@ -249,6 +250,7 @@ angular.module('cds_app').controller('Lipid_modification_therapy_follow_up_and_m
   <div class="medium-6 columns" style="text-align: center;">
     <label>{{${management_of_therapy_cds_data}.value.value}}</label>
   </div>
+</div>
 </div>
 </div>
 </div>
@@ -364,8 +366,20 @@ angular.module('cds_app').controller('Lipid_modification_therapy_follow_up_and_m
   .references1{
     font-size: 70%;
   }
+  .potentialalert{
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    font-size: 90%;
+  }
   .stopstatins {
-  background-color: #FF0000;
+  background-color: #ffe6cc;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  font-size: 90%;
+  }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
       0% { 
@@ -386,14 +400,14 @@ angular.module('cds_app').controller('Lipid_modification_therapy_follow_up_and_m
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-	padding-left: 3px;
+    padding-left: 3px;
     font-size: 90%;
   }
   #displayresult2 {
     background-color: #f2f2f2;
     padding-top: 3px;
     padding-bottom: 3px;
-	padding-left: 3px;
+    padding-left: 3px;
     font-size: 90%;
   }
   select, label:not(#h-fix) {

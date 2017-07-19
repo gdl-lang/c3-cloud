@@ -65,9 +65,14 @@
   ],
   "alertBindings": {},
   "termDefinitions": {
-    "en": {
+   "en": {
       "id": "en",
-      "terms": {}
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
     }
   },
   "resultTemplates": []
@@ -104,6 +109,12 @@ angular.module('cds_app').controller('Eye_Disease_Ctrl', function($scope, $windo
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
     getInformation();
+  });
+  $scope.$on('executeEnd', function() {
+    $scope.emergencyAlert=false;
+    if($scope.${sudden_loss_of_vision_or_rubeosis_iridis_or_pre_retinal_or_vitreous_hemorrhage_or_retinal_detachment__ehr_data}.value.selection[0].charAt(0) == 1){
+      $scope.emergencyAlert=true;
+    }
   });
 });
 function getInformation() {
@@ -165,15 +176,17 @@ function getInformation() {
         <input type="radio" value="{{key}}" ng-model="${other_pathological_findings__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
       </label>
     </div>
-  <div class="row collapse" title="{{${recommendation_def}.description}}" id="displayresult">
-    <div class="medium-6 columns">
-      <label><b>{{${recommendation_def}.name}}: </b></label>
-    </div>
-    <div class="medium-6 columns" style="text-align: center;">
-      <label>{{${recommendation_cds_data}.value.value}}</label>
+    <div class="displayresult" ng-class="{'emergencyalert':emergencyAlert}">
+      <div class="row collapse" title="{{${recommendation_def}.description}}">
+        <div class="medium-6 columns">
+          <label><b>{{${recommendation_def}.name}}: </b></label>
+        </div>
+        <div class="medium-6 columns" style="text-align: center;">
+          <label>{{${recommendation_cds_data}.value.value}}</label>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <br/><br/>
@@ -234,7 +247,7 @@ function getInformation() {
   h2 {
     text-align: left;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 20px;
   }
   h3 {
     text-align: left;
@@ -273,6 +286,16 @@ function getInformation() {
     width: 70%;
     margin: auto;
   }
+  .displayresult {
+  background-color: #e6e6e6; 
+  padding: 3px;
+  font-size: 90%;
+  }
+  .emergencyalert {
+  background-color: #ffe6cc; 
+  padding: 3px;
+  font-size: 90%;
+  }
   #infobox{
     margin: auto;
     border: 1px solid LightSlateGrey;
@@ -288,11 +311,6 @@ function getInformation() {
     text-align: left;
     border: 1.2px dashed SlateGray;
     padding:0.5em;
-  }
-  #displayresult {
-    background-color: #e6e6e6; 
-    padding: 3px;
-    font-size: 90%;
   }
   #ref {
     font-size:90%; 
