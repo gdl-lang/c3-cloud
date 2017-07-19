@@ -129,10 +129,12 @@ function getInformation() {
       <hr style="height:1.5px;border:none;color:SlateGray;background-color:SlateGray;" />
         <div class="wrapper1">
           <button class="button" onclick="getInformation()">App Description</button>
-          <div id="infobox"> 
+          <div id="infobox">
             <h2>{{def.concept.description}}</h2>
             <br/>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed egestas magna. Aenean magna dolor, accumsan eget malesuada sodales, ultricies eu mi. Curabitur rutrum quis felis sed dignissim. Donec porttitor, tellus nec eleifend condimentum, orci eros imperdiet erat, et eleifend dolor libero eu magna. Etiam vel enim vel turpis dignissim dictum. Aliquam et lorem molestie lorem vulputate ullamcorper vel eu nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <div id="geninfo">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed egestas magna. Aenean magna dolor, accumsan eget malesuada sodales, ultricies eu mi. Curabitur rutrum quis felis sed dignissim. Donec porttitor, tellus nec eleifend condimentum, orci eros imperdiet erat, et eleifend dolor libero eu magna. Etiam vel enim vel turpis dignissim dictum. Aliquam et lorem molestie lorem vulputate ullamcorper vel eu nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </div>
           </div>
         </div>
   </div>
@@ -262,7 +264,7 @@ function getInformation() {
   }
   .wrapper1{
     text-align: center;
-
+    margin-bottom: 1em;
   }
   .wrapper2{
     font-style: italic;
@@ -309,6 +311,11 @@ function getInformation() {
     padding: 1em;
     width: 55%;
     overflow: hidden;
+  }
+  #geninfo{
+    text-align: left;
+    border: 1.2px dashed SlateGray;
+    padding:0.5em;
   }
   #disc {
     font-size: 55%;

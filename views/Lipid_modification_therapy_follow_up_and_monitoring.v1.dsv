@@ -13,7 +13,7 @@
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
 <script id="decision-support-view" type="application/json">{
-  "dsViewId": "Lipid_modification_therapy_follow_up_and_monitoring.v0",
+  "dsViewId": "Lipid_modification_therapy_follow_up_and_monitoring.v1",
   "language": {
     "originalLanguage": {
       "terminologyId": {
@@ -193,7 +193,7 @@ angular.module('cds_app').controller('Lipid_modification_therapy_follow_up_and_m
   </div>
 <div class="row collapse" title="{{${high_intensity_treatment__def}.description}}">
     <div class="medium-7 columns">
-      <label>{{${high_intensity_treatment__def}.name}}</label>
+      <label>{{${high_intensity_treatment__def}.name}} + "tjenare"</label>
     </div>
     <label class="medium-2 columns" ng-repeat="(key, desc) in ${high_intensity_treatment__def}.selections">
       <input type="radio" value="{{key}}" ng-model="${high_intensity_treatment__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
@@ -215,7 +215,7 @@ angular.module('cds_app').controller('Lipid_modification_therapy_follow_up_and_m
     <label>{{${measurement_liver_cds_data}.value.value}}</label>
   </div>
 </div>
-<div class="row collapse" title="{{${management_liver_def}.description}}">
+<div class="row collapse" title="{{${management_liver_def}.description}}" id="displayresult2">
   <div class="medium-6 columns">
     <div class ="testing123" ng-class="{'stopstatins': stopStatins}">
     <label><b>{{${management_liver_def}.name}}: </b></label>
