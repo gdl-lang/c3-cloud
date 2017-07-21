@@ -112,7 +112,7 @@ If the patient is old/frail or have reduced life expectancy or high risk due to 
 				terms = <
 					["gt0001"] = (TERM) <
 						text = <"HbA1c measurements and targets">
-						description = <"To provide guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.
+						description = <"The aim of this guideline is to provide guidance on HbA1c measurements and targets among patients with type 2 diabetes, in accordance with the NICE Guidelines.
 ">
 					>
 					["gt0004"] = (TERM) <

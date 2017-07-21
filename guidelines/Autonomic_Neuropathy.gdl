@@ -93,8 +93,7 @@ Patients are recommended to receive monitoring if they are experiencing:
 				terms = <
 					["gt0001"] = (TERM) <
 						text = <"Autonomic Neuropathy (C3-Cloud)">
-						description = <"To provide guidance about monitoring autonomic neuropathy in diabetes patients.
-">
+						description = <"The aim of this guideline is to provide guidance on monitoring autonomic neuropathy in diabetes patients, in accordance with the NICE Guidelines.">
 					>
 					["gt0003"] = (TERM) <
 						text = <"Has the patient experienced loss of warning signs for hypoglycaemia?">
