@@ -155,6 +155,16 @@ angular.module('cds_app').controller('Lipid_modification_therapy_follow_up_and_m
     }
   });
 });
+function getInformation() {
+    var x = document.getElementById('infobox');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+
+}
+
 </script>
 
 <div ng-show="ready" ng-controller="Lipid_modification_therapy_follow_up_and_monitoring_Ctrl">
