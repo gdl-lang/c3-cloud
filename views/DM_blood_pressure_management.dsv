@@ -1,0 +1,58 @@
+<html><head><script id="decision-support-view" type="application/json">{
+  "dsViewId": "DM_blood_pressure_management",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "en": {
+      "name": "Diabetes - Blood Pressure Management",
+      "description": "NICE guideline for blood pressure management in diabetes."
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-08-02",
+      "name": "Eneimi Allwell-Brown",
+      "organisation": "models@cambiocds.com",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [],
+    "lifecycleState": "Author draft",
+    "details": {
+      "en": {
+        "purpose": "To offer recommendations for the management of blood pressure in patients with diabetes.",
+        "keywords": [
+          "NICE",
+          "hypertension",
+          "blood pressure control",
+          "diabetes mellitus",
+          "BP"
+        ],
+        "use": "To record data used in determining guideline-based recommendations in managing blood pressure in diabetic patients. Based on responses to questions on the patient\u0027s blood pressure status, ancestry, the presence of vascular complications, the clinical response to different medication groups, the presence of side effects of previous antihypertensive medication and others, various recommendations are provided for both normotensive and hypertensive patients (newly-diagnosed or previously diagnosed). The recommendations include treatment options and frequency of follow-up blood pressure checks.\nNOTE:\n- It is mandatory to answer ALL questions. If a question is not yet relevant, answer with \u0027No\u0027. \n- ALL recommendations given must be implemented as prescribed. \n- ALWAYS provide lifestyle advice (diet and exercise) according to NICE Guidelines NG28 and CG127, and commence medication if target blood pressure is not attained. Target blood pressure is generally \u003c140/80 mmHg, OR \u003c130/80 mmHg if the patient also has micro-/macrovascular complications.\n- First-line antihypertensive drug treatment should be an ACE inhibitor (or an ARB if the patient is intolerant to ACE inhibitors)\n- First-line antihypertensive drug treatment in persons of African or Caribbean descent should be an ACE inhibitor plus either a diuretic or a calcium-channel blocker\n- First-line antihypertensive drug treatment in women who after informed discussion indicate the possibility of becoming pregnant should be a calcium-channel blocker\n- DO NOT combine an ACE inhibitor with an ARB to treat hypertension in patients with diabetes.",
+        "misuse": "Not a diagnostic tool.\nDo not leave any question unanswered.",
+        "copyright": "© Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "NICE. Diabetic foot problems: prevention and management. NG28. December 2015."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "DM_blood_pressure_management.v0"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "en": {
+      "id": "en",
+      "terms": {}
+    }
+  },
+  "resultTemplates": []
+}</script></head><body></body></html>
