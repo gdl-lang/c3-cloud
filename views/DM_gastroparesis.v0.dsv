@@ -1,0 +1,57 @@
+<html><head><script id="decision-support-view" type="application/json">{
+  "dsViewId": "DM_gastroparesis.v0",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "en": {
+      "name": "Diabetes - Management of Gastroparesis",
+      "description": "NICE guideline for management of gastroparesis in patients with diabetes."
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-08-09",
+      "name": "Eneimi Allwell-Brown",
+      "organisation": "models@cambiocds.com",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [],
+    "lifecycleState": "Author draft",
+    "details": {
+      "en": {
+        "purpose": "To offer recommendations for the detection and management of gastroparesis in adults with diabetes.",
+        "keywords": [
+          "NICE",
+          "diabetes mellitus",
+          "antiemetic",
+          "gastric bloating"
+        ],
+        "use": "To record data used in determining guideline-based recommendations in managing gastroparesis in diabetic patients. Based on responses to questions on unexplained gastrointestinal symptoms, blood glucose control over time, cardiac risk, and risk of medication interaction, recommendations are provided for considering a diagnosis of gastroparesis, selecting the most appropriate medication and considering referral of the patient to specialist services.\nNOTE:\n- It is mandatory to answer ALL questions.\n- ALL recommendations given must be implemented as prescribed. \n- ALWAYS provide patient information about the strength of evidence for the different medications.\n- Consider alternating use of erythromycin and metoclopramide as first line medication.\n- Metoclopramide is only used short-term (5 days) and maximum dose is 30mg in 24hrs.\n- Only consider domperidone if it is the only effective treatment, and its safety profile, cardiac risk and potential drug-drug interactions have been taken into account; and even then in accordance with local drug regulatory agency guidance.\n- Domperidone is only used short-term (maximum 7 days) and only at the lowest effective dose.\n- Domperidone is contraindicated in patients with cardiac conditions or who currently use medication that inhibits CYP3A4 activity. If still considered, the prescriber should follow relevant professional guidance and take full repsonsibility for the decision.\n- Refer the patient to specialist services if the diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting.",
+        "misuse": "Not a diagnostic tool",
+        "copyright": "© Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "NICE. Type 2 diabetes in adults: management. NG28. December 2015."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "DM_gastroparesis.v0"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "en": {
+      "id": "en",
+      "terms": {}
+    }
+  },
+  "resultTemplates": []
+}</script></head><body></body></html>

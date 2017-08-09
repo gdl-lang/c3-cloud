@@ -1,0 +1,171 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"DM_gastroparesis.v0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"NICE", "diabetes mellitus", "antiemetic", "gastric bloating">
+				misuse = <"Not a diagnostic tool.">
+				purpose = <"To offer recommendations for the detection and management of gastroparesis in adults with diabetes.">
+				use = <"To record data used in determining guideline-based recommendations in managing gastroparesis in diabetic patients. Based on responses to questions on unexplained gastrointestinal symptoms, blood glucose control over time, cardiac risk, and risk of medication interaction, recommendations are provided for considering a diagnosis of gastroparesis, selecting the most appropriate medication and considering referral of the patient to specialist services.
+NOTE:
+- It is mandatory to answer ALL questions.
+- ALL recommendations given must be implemented as prescribed. 
+- ALWAYS provide patient information about the strength of evidence for the different medications.
+- Consider alternating use of erythromycin and metoclopramide as first line medication.
+- Metoclopramide is only used short-term (5 days) and maximum dose is 30mg in 24hrs.
+- Only consider domperidone if it is the only effective treatment, and its safety profile, cardiac risk and potential drug-drug interactions have been taken into account; and even then in accordance with local drug regulatory agency guidance.
+- Domperidone is only used short-term (maximum 7 days) and only at the lowest effective dose.
+- Domperidone is contraindicated in patients with cardiac conditions or who currently use medication that inhibits CYP3A4 activity. If still considered, the prescriber should follow relevant professional guidance and take full repsonsibility for the decision.
+- Refer the patient to specialist services if the diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2017-08-09">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"NICE. Type 2 diabetes in adults: management. NG28. December 2015.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.diabetes_gastroparesis.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0012]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0009"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.diabetes_gastroparesis.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0010]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
+					>
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0014]">
+					>
+					["gt0013"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0015]">
+					>
+					["gt0014"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0016]">
+					>
+					["gt0015"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0017]">
+					>
+				>
+			>
+		>
+		pre_conditions = <"($gt0004==1|local::at0009|Yes|)||($gt0005==1|local::at0009|Yes|)", "$gt0003==1|local::at0009|Yes|">
+		rules = <
+			["gt0016"] = (RULE) <
+				when = <"($gt0007==1|local::at0009|Yes|)||($gt0008==1|local::at0009|Yes|)",...>
+				then = <"$gt0015=local::at0024|Refer the patient to specialist services if diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting|", "$gt0014=local::at0023|Domperidone is contraindicated. If still considered, prescriber should follow relevant professional guidance and take full responsibility for the decision|", "$gt0013=local::at0021|Consider alternating use of erythromycin and short-term (5 days only, and maximum dose of 30mg in 24hrs) metoclopramide|", "$gt0012=local::at0020|Explain that the strongest evidence is for domperidone but safety profile, cardiac risk and potential drug-drug interactions must be taken into account first|", "$gt0011=local::at0019|Explain that some people have benefited from Domperidone, Erythromycin or Metoclopramide medication|", "$gt0010=local::at0018|Explain that there is no strong evidence that available antiemetic therapy is effective|">
+				priority = <2>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0008==0|local::at0008|No|", "$gt0007==0|local::at0008|No|">
+				then = <"$gt0015=local::at0024|Refer the patient to specialist services if diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting|", "$gt0014=local::at0022|Consider domperidone if it is the only effective treatment, short-term (maximum of 7 days) and at the lowest effective dose, in accordance with (drug agency) regulatory guidance|", "$gt0013=local::at0021|Consider alternating use of erythromycin and short-term (5 days only, and maximum dose of 30mg in 24hrs) metoclopramide|", "$gt0012=local::at0020|Explain that the strongest evidence is for domperidone but safety profile, cardiac risk and potential drug-drug interactions must be taken into account first|", "$gt0011=local::at0019|Explain that some people have benefited from Domperidone, Erythromycin or Metoclopramide medication|", "$gt0010=local::at0018|Explain that there is no strong evidence that available antiemetic therapy is effective|">
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Diabetes - Management of Gastroparesis">
+						description = <"The National Institute for Health and Care Excellence (NICE) guideline for management of type 2 diabetes in adults provides recommendations for management of gastroparesis in patients with diabetes. Recommendations for detection, treatment and referral are made based on the presence of erratic blood glucose control or gastric bloating/vomiting, effectiveness and side-effect profile of prescribed medication, and certainty of diagnosis or duration and severity of symptoms respectively.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Does the patient have diabetes">
+						description = <"Has the patient been diagnosed with diabetes?">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Is blood glucose control erratic">
+						description = <"Has blood glucose control been erratic?">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Does the patient have unexplained gastric bloating or vomiting">
+						description = <"Is there any unexplained gastric bloating or vomiting?">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Is there any doubt about a diagnosis of gastroparesis">
+						description = <"Is there strong reason to consider an alternative diagnosis to gastroparesis?">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Does the patient have any known or potential cardiac condition">
+						description = <"Has the patient previously been diagnosed with any cardiac condition?">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Does the patient currently use any medication that inhibits the CYP3A4 enzyme">
+						description = <"Is the patient actively using any medication that inhibits CYP3A4 enzyme?">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Recommendation 1">
+						description = <"*">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Recommendation 2">
+						description = <"*">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Recommendation 3">
+						description = <"*">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Recommendation 4">
+						description = <"*">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Recommendation 5">
+						description = <"*">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Recommendation 6">
+						description = <"*">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Domperidone contraindicated">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Domperidone not contraindicated">
+					>
+				>
+			>
+		>
+	>
+>

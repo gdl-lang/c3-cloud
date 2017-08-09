@@ -1,0 +1,298 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.diabetes_gastroparesis.v0
+
+concept
+	[at0000]	-- Diabetes - Management of Gastroparesis
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-08-03">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To offer recommendations for the detection and management of gastroparesis in adults with diabetes.">
+			use = <"To record data used in determining guideline-based recommendations in managing gastroparesis in diabetic patients. Based on responses to questions on unexplained gastrointestinal symptoms, blood glucose control over time, cardiac risk, and risk of medication interaction, recommendations are provided for considering a diagnosis of gastroparesis, selecting the most appropriate medication and considering referral of the patient to specialist services.
+NOTE:
+- It is mandatory to answer ALL questions.
+- ALL recommendations given must be implemented as prescribed. 
+- ALWAYS provide patient information about the strength of evidence for the different medications.
+- Consider alternating use of erythromycin and metoclopramide as first line medication.
+- Metoclopramide is only used short-term (5 days) and maximum dose is 30mg in 24hrs.
+- Only consider domperidone if it is the only effective treatment, and its safety profile, cardiac risk and potential drug-drug interactions have been taken into account; and even then in accordance with local drug regulatory agency guidance.
+- Domperidone is only used short-term (maximum 7 days) and only at the lowest effective dose.
+- Domperidone is contraindicated in patients with cardiac conditions or who currently use medication that inhibits CYP3A4 activity. If still considered, the prescriber should follow relevant professional guidance and take full repsonsibility for the decision.
+- Refer the patient to specialist services if the diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting.">
+			keywords = <"NICE", "diabetes mellitus", "antiemetic", "gastric bloating">
+			misuse = <"Not a diagnostic tool.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"NICE. Type 2 diabetes in adults: management. NG28. December 2015.">
+		["MD5-CAM-1.0.1"] = <"53E32075DF3DA217D3123D070C004ECC">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Diabetes - Management of Gastroparesis
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Does the patient have diabetes
+										value matches {
+											0|[local::at0008], 	-- No
+											1|[local::at0009]  	-- Yes
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Is blood glucose control erratic
+										value matches {
+											0|[local::at0008], 	-- No
+											1|[local::at0009]  	-- Yes
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Does the patient have unexplained gastric bloating or vomiting
+										value matches {
+											0|[local::at0008], 	-- No
+											1|[local::at0009]  	-- Yes
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Is there any doubt about a diagnosis of gastroparesis
+										value matches {
+											0|[local::at0008], 	-- No
+											1|[local::at0009]  	-- Yes
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Recommendation 1
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0018, 	-- Explain that there is no strong evidence that available antiemetic therapy is effective
+													at0019, 	-- Explain that some people have benefited from Domperidone, Erythromycin or Metoclopramide medication
+													at0020, 	-- Explain that the strongest evidence is for domperidone but safety profile, cardiac risk and potential drug-drug interactions must be taken into account first
+													at0021, 	-- Consider alternating use of erythromycin and short-term (5 days only, and maximum dose of 30mg in 24hrs) metoclopramide
+													at0022, 	-- Consider domperidone if it is the only effective treatment, short-term (maximum of 7 days) and at the lowest effective dose, in accordance with (drug agency) regulatory guidance
+													at0023, 	-- Domperidone is contraindicated. If still considered, prescriber should follow relevant professional guidance and take full responsibility for the decision
+													at0024]	-- Refer the patient to specialist services if diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting
+												}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Does the patient have any known or potential cardiac condition
+										value matches {
+											0|[local::at0008], 	-- No
+											1|[local::at0009]  	-- Yes
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Does the patient currently use any medication that inhibits the CYP3A4 enzyme
+										value matches {
+											0|[local::at0008], 	-- No
+											1|[local::at0009]  	-- Yes
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Recommendation 2
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0018, 	-- Explain that there is no strong evidence that available antiemetic therapy is effective
+													at0019, 	-- Explain that some people have benefited from Domperidone, Erythromycin or Metoclopramide medication
+													at0020, 	-- Explain that the strongest evidence is for domperidone but safety profile, cardiac risk and potential drug-drug interactions must be taken into account first
+													at0021, 	-- Consider alternating use of erythromycin and short-term (5 days only, and maximum dose of 30mg in 24hrs) metoclopramide
+													at0022, 	-- Consider domperidone if it is the only effective treatment, short-term (maximum of 7 days) and at the lowest effective dose, in accordance with (drug agency) regulatory guidance
+													at0023, 	-- Domperidone is contraindicated. If still considered, prescriber should follow relevant professional guidance and take full responsibility for the decision
+													at0024]	-- Refer the patient to specialist services if diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting
+												}
+											}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Recommendation 3
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0018, 	-- Explain that there is no strong evidence that available antiemetic therapy is effective
+													at0019, 	-- Explain that some people have benefited from Domperidone, Erythromycin or Metoclopramide medication
+													at0020, 	-- Explain that the strongest evidence is for domperidone but safety profile, cardiac risk and potential drug-drug interactions must be taken into account first
+													at0021, 	-- Consider alternating use of erythromycin and short-term (5 days only, and maximum dose of 30mg in 24hrs) metoclopramide
+													at0022, 	-- Consider domperidone if it is the only effective treatment, short-term (maximum of 7 days) and at the lowest effective dose, in accordance with (drug agency) regulatory guidance
+													at0023, 	-- Domperidone is contraindicated. If still considered, prescriber should follow relevant professional guidance and take full responsibility for the decision
+													at0024]	-- Refer the patient to specialist services if diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting
+												}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Recommendation 4
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0018, 	-- Explain that there is no strong evidence that available antiemetic therapy is effective
+													at0019, 	-- Explain that some people have benefited from Domperidone, Erythromycin or Metoclopramide medication
+													at0020, 	-- Explain that the strongest evidence is for domperidone but safety profile, cardiac risk and potential drug-drug interactions must be taken into account first
+													at0021, 	-- Consider alternating use of erythromycin and short-term (5 days only, and maximum dose of 30mg in 24hrs) metoclopramide
+													at0022, 	-- Consider domperidone if it is the only effective treatment, short-term (maximum of 7 days) and at the lowest effective dose, in accordance with (drug agency) regulatory guidance
+													at0023, 	-- Domperidone is contraindicated. If still considered, prescriber should follow relevant professional guidance and take full responsibility for the decision
+													at0024]	-- Refer the patient to specialist services if diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting
+												}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Recommendation 5
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0018, 	-- Explain that there is no strong evidence that available antiemetic therapy is effective
+													at0019, 	-- Explain that some people have benefited from Domperidone, Erythromycin or Metoclopramide medication
+													at0020, 	-- Explain that the strongest evidence is for domperidone but safety profile, cardiac risk and potential drug-drug interactions must be taken into account first
+													at0021, 	-- Consider alternating use of erythromycin and short-term (5 days only, and maximum dose of 30mg in 24hrs) metoclopramide
+													at0022, 	-- Consider domperidone if it is the only effective treatment, short-term (maximum of 7 days) and at the lowest effective dose, in accordance with (drug agency) regulatory guidance
+													at0023, 	-- Domperidone is contraindicated. If still considered, prescriber should follow relevant professional guidance and take full responsibility for the decision
+													at0024]	-- Refer the patient to specialist services if diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting
+												}
+											}
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Recommendation 6
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0018, 	-- Explain that there is no strong evidence that available antiemetic therapy is effective
+													at0019, 	-- Explain that some people have benefited from Domperidone, Erythromycin or Metoclopramide medication
+													at0020, 	-- Explain that the strongest evidence is for domperidone but safety profile, cardiac risk and potential drug-drug interactions must be taken into account first
+													at0021, 	-- Consider alternating use of erythromycin and short-term (5 days only, and maximum dose of 30mg in 24hrs) metoclopramide
+													at0022, 	-- Consider domperidone if it is the only effective treatment, short-term (maximum of 7 days) and at the lowest effective dose, in accordance with (drug agency) regulatory guidance
+													at0023, 	-- Domperidone is contraindicated. If still considered, prescriber should follow relevant professional guidance and take full responsibility for the decision
+													at0024]	-- Refer the patient to specialist services if diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diabetes - Management of Gastroparesis">
+					description = <"The National Institute for Health and Care Excellence (NICE) guideline for management of type 2 diabetes in adults provides recommendations for management of gastroparesis in patients with diabetes. Recommendations for detection, treatment and referral are made based on the presence of erratic blood glucose control or gastric bloating/vomiting, effectiveness and side-effect profile of prescribed medication, and certainty of diagnosis or duration and severity of symptoms respectively.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Does the patient have diabetes">
+					description = <"Has the patient been diagnosed with diabetes?">
+				>
+				["at0005"] = <
+					text = <"Is blood glucose control erratic">
+					description = <"Has blood glucose control been erratic?">
+				>
+				["at0006"] = <
+					text = <"Does the patient have unexplained gastric bloating or vomiting">
+					description = <"Is there any unexplained gastric bloating or vomiting?">
+				>
+				["at0007"] = <
+					text = <"Is there any doubt about a diagnosis of gastroparesis">
+					description = <"Is there strong reason to consider an alternative diagnosis to gastroparesis?">
+				>
+				["at0008"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Recommendation 1">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Does the patient have any known or potential cardiac condition">
+					description = <"Has the patient previously been diagnosed with any cardiac condition?">
+				>
+				["at0012"] = <
+					text = <"Does the patient currently use any medication that inhibits the CYP3A4 enzyme">
+					description = <"Is the patient actively using any medication that inhibits CYP3A4 enzyme?">
+				>
+				["at0013"] = <
+					text = <"Recommendation 2">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Recommendation 3">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Recommendation 4">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Recommendation 5">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Recommendation 6">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Explain that there is no strong evidence that available antiemetic therapy is effective">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Explain that some people have benefited from Domperidone, Erythromycin or Metoclopramide medication">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Explain that the strongest evidence is for domperidone but safety profile, cardiac risk and potential drug-drug interactions must be taken into account first">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Consider alternating use of erythromycin and short-term (5 days only, and maximum dose of 30mg in 24hrs) metoclopramide">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Consider domperidone if it is the only effective treatment, short-term (maximum of 7 days) and at the lowest effective dose, in accordance with (drug agency) regulatory guidance">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Domperidone is contraindicated. If still considered, prescriber should follow relevant professional guidance and take full responsibility for the decision">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Refer the patient to specialist services if diagnosis of gastroparesis is in doubt or if there is persistent or severe vomiting">
+					description = <"*">
+				>
+			>
+		>
+	>
