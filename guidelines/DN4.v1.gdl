@@ -101,9 +101,6 @@ Van Seventer R, Vos C, Meerding W, Mear I, Le Gal M, Bouhassira D et al. Linguis
 					["gt0013"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
 					>
-					["gt0041"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0035]">
-					>
 				>
 				predicates = <"max(/data/events/time)",...>
 			>
@@ -176,7 +173,7 @@ Van Seventer R, Vos C, Meerding W, Mear I, Le Gal M, Bouhassira D et al. Linguis
 				terms = <
 					["gt0001"] = (TERM) <
 						text = <"DN4">
-						description = <"The Douleur Neuropathique 4 (DN4) is a tool constructed to aid diagnosing of neuropathic pain.">
+						description = <"The Douleur Neuropathique 4 Questions (DN4) is a tool constructed to aid diagnosing of neuropathic pain. A score of 4p or more indicates a >90% specificity for neuropathic pain.">
 					>
 					["gt0004"] = (TERM) <
 						text = <"Can the pain be characterized as burning?">

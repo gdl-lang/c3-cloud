@@ -27,7 +27,7 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Douleur Neuropathique 4",
-      "description": "Tool constructed to aid diagnosing of neuropathic pain"
+      "description": "Douleur Neuropathique 4 Questionnaire"
     },
     "sv": {
       "name": "Douleur Neuropathique 4"
@@ -112,7 +112,6 @@
 <#assign can_the_pain_be_characterized_as_painfully_cold__def = dn4_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
 <#assign can_the_pain_be_characterized_as_electric_shocks__def = dn4_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
 <#assign is_the_pain_associated_with_tingling_in_the_same_area__def = dn4_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign general_information_def = dn4_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0035}']">
 <#assign score_def = dn4_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0033}']">
 <#assign is_the_pain_associated_with_itching_in_the_same_area__def = dn4_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign is_the_pain_associated_with_feeling_of_pins_and_needles_in_the_same_area__cds_data = dn4_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
@@ -125,7 +124,6 @@
 <#assign can_the_pain_be_characterized_as_painfully_cold__cds_data = dn4_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
 <#assign can_the_pain_be_characterized_as_electric_shocks__cds_data = dn4_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
 <#assign is_the_pain_associated_with_tingling_in_the_same_area__cds_data = dn4_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign general_information_cds_data = dn4_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0035}']">
 <#assign score_cds_data = dn4_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0033}']">
 <#assign is_the_pain_associated_with_itching_in_the_same_area__cds_data = dn4_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign is_the_pain_associated_with_feeling_of_pins_and_needles_in_the_same_area__ehr_data = dn4_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
@@ -138,7 +136,6 @@
 <#assign can_the_pain_be_characterized_as_painfully_cold__ehr_data = dn4_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
 <#assign can_the_pain_be_characterized_as_electric_shocks__ehr_data = dn4_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
 <#assign is_the_pain_associated_with_tingling_in_the_same_area__ehr_data = dn4_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign general_information_ehr_data = dn4_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0035}']">
 <#assign score_ehr_data = dn4_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0033}']">
 <#assign is_the_pain_associated_with_itching_in_the_same_area__ehr_data = dn4_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign dn4_entry1_cds_data = "data.cds['openEHR-EHR-EVALUATION.dn4.v1']">
@@ -178,21 +175,20 @@ function getInformation() {
 
 <div ng-show="ready" ng-controller="DN4_Ctrl">
 <div ng-show="ready">
-  <div ng-show="ready">
       <h1>{{def.concept.name}}</h1>
       <hr style="height:1.5px;border:none;color:SlateGray;background-color:SlateGray;" />
         <div class="wrapper1">
           <button class="button" onclick="getInformation()">App Description</button>
           <div id="infobox">
             <h2>{{def.concept.description}}</h2>
-            <br/>
+            <br />
             <div id="geninfo">
-              <b>{{${general_information_def}.name}}:</b>
-              <li ng-repeat="(key, desc) in ${general_information_def}.selections">{{desc}}</li>
+              {{${app_info}.description}}
             </div>
           </div>
         </div>
   </div>
+  
   <div class="card">
     <div class="row collapse" title="{{${can_the_pain_be_characterized_as_burning__def}.description}}">
       <div class="medium-8 columns">
@@ -276,20 +272,20 @@ function getInformation() {
     </div>
 <div class="displayresult1" title="{{${score_def}.description}}">
       <div class="row collapse">
-        <div class="medium-6 columns">
+        <div class="medium-7 columns">
           <label><b>{{${score_def}.name}}: </b></label>
         </div>
-        <div class="medium-6 columns" style="text-align: center;">
-          <label>{{${score_cds_data}.magnitude}}</label>
+        <div class="medium-5 columns" style="text-align: center;">
+          <label>{{${score_cds_data}.value.magnitude}}</label>
         </div>
       </div>
     </div>
 <div class="displayresult2" title="{{${result__def}.description}}">
       <div class="row collapse">
-        <div class="medium-6 columns">
+        <div class="medium-7 columns">
           <label><b>{{${result__def}.name}}: </b></label>
         </div>
-        <div class="medium-6 columns" style="text-align: center;">
+        <div class="medium-5 columns" style="text-align: center;">
           <label>{{${result__cds_data}.value.symbol.value}}</label>
         </div>
       </div>
@@ -297,15 +293,21 @@ function getInformation() {
   </div>
 </div>
 
-<br/><br/>
+<br /><br />
 
 <div class="references1">
   <div class="row collapse">
     <div class="medium-12 columns">
       <h3>{{${references}.text}}</h3>
         <div id="ref">
-          <li >
-            <i><a href="https://www.nice.org.uk/guidance/ng28">National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).To identify diabetes patients in need of autonomic neuropathy monitoring.</a>
+          <li>
+            <i><a href="https://www.nice.org.uk/guidance/ng28">Bouhassira D, Attal N, Alchaar H, Boureau F, Brochet B, Bruxelle J et al. Comparison of pain syndromes associated with nervous or somatic lesions and development of a new neuropathic pain diagnostic questionnaire (DN4). Pain 2005; 114: 29–36.</a>
+            </i>
+          </li>
+        </div>
+		<div id="ref">
+          <li>
+            <i><a href="https://www.nice.org.uk/guidance/ng28">Van Seventer R, Vos C, Meerding W, Mear I, Le Gal M, Bouhassira D et al. Linguistic validation of the DN4 for use in international studies. Eur J Pain 2010; 14: 58–63.</a>
             </i>
           </li>
         </div>
@@ -313,7 +315,7 @@ function getInformation() {
   </div>
 </div>
 
-<br/>
+<br />
 
 <div class="wrapper2">
   <div class="row collapse">
@@ -325,14 +327,14 @@ function getInformation() {
   </div>
 </div>
 
-<br/>
+<br />
 
 <div class="wrapper1">
-    <img src="https://www.kronikgune.org/wp-content/uploads/2016/05/c3cloud-proyecto-europeo-kronikgune.jpg" id="projectimg"/>
-    <img src="http://www.cambiohealthcare.co.uk/wp-content/uploads/2016/09/Cambio_logo_left.jpg" id="projectimg"/>
+    <img src="https://www.kronikgune.org/wp-content/uploads/2016/05/c3cloud-proyecto-europeo-kronikgune.jpg" id="projectimg" />
+    <img src="http://www.cambiohealthcare.co.uk/wp-content/uploads/2016/09/Cambio_logo_left.jpg" id="projectimg" />
 </div>
 
-<br/>
+<br />
 
 <style>
   html, body {
@@ -438,5 +440,6 @@ function getInformation() {
   }
 </style>
 </div>
-</body>
-</html>
+
+
+</body></html>

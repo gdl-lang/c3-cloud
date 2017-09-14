@@ -28,7 +28,7 @@ description
 		["references"] = <"Bouhassira D, Attal N, Alchaar H, Boureau F, Brochet B, Bruxelle J et al. Comparison of pain syndromes associated with nervous or somatic lesions and development of a new neuropathic pain diagnostic questionnaire (DN4). Pain 2005; 114: 29–36.
 
 Van Seventer R, Vos C, Meerding W, Mear I, Le Gal M, Bouhassira D et al. Linguistic validation of the DN4 for use in international studies. Eur J Pain 2010; 14: 58–63.">
-		["MD5-CAM-1.0.1"] = <"8D2FCFE76721DBBA8D22F1EEB1946B12">
+		["MD5-CAM-1.0.1"] = <"EFCB28E59EE3BE189337B91681451B43">
 	>
 
 definition
@@ -103,17 +103,6 @@ definition
 									ELEMENT[at0033] occurrences matches {0..1} matches {	-- Score
 										value matches {
 											DV_COUNT matches {*}
-										}
-									}
-									ELEMENT[at0035] occurrences matches {0..1} matches {	-- General information
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0036, 	-- The Douleur Neuropathique 4 Questions (DN4) is a tool constructed to aid diagnosing of neuropathic pain.
-													at0037]	-- A score of 4p or more indicates a >90% specificity for neuropathic pain
-												}
-											}
 										}
 									}
 								}
@@ -267,18 +256,6 @@ ontology
 				>
 				["at0034"] = <
 					text = <"Yes">
-					description = <"*">
-				>
-				["at0035"] = <
-					text = <"General information">
-					description = <"*">
-				>
-				["at0036"] = <
-					text = <"The Douleur Neuropathique 4 Questions (DN4) is a tool constructed to aid diagnosing of neuropathic pain.">
-					description = <"*">
-				>
-				["at0037"] = <
-					text = <"A score of 4p or more indicates a >90% specificity for neuropathic pain">
 					description = <"*">
 				>
 			>
